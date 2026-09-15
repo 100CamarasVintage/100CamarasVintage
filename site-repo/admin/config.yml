@@ -1,0 +1,48 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+locale: "es"
+
+collections:
+  - name: "productos"
+    label: "Productos"
+    label_singular: "Producto"
+    folder: "content/productos"
+    create: true
+    slug: "producto-{{fields.id}}"
+    identifier_field: title
+    summary: "{{title}} — {{price}} ({{category}})"
+    sortable_fields: ["title", "price", "category"]
+    view_filters:
+      - label: "Cámaras"
+        field: category
+        pattern: "Cámaras"
+      - label: "Lentes"
+        field: category
+        pattern: "Lentes"
+      - label: "Flashes"
+        field: category
+        pattern: "Flashes"
+      - label: "Accesorios"
+        field: category
+        pattern: "Accesorios"
+    fields:
+      - { label: "ID (no tocar, se genera solo)", name: "id", widget: "number", required: true }
+      - { label: "Título", name: "title", widget: "string", required: true }
+      - { label: "Precio (ej: $120.000 o Consultar)", name: "price", widget: "string", required: true }
+      - label: "Categoría"
+        name: "category"
+        widget: "select"
+        options: ["Cámaras", "Lentes", "Flashes", "Accesorios", "Otros"]
+        default: "Cámaras"
+      - { label: "Código de producto", name: "code", widget: "string", required: false }
+      - { label: "Descripción", name: "description", widget: "text", required: true }
+      - label: "Fotos"
+        name: "photos"
+        widget: "list"
+        field: { label: "Foto", name: "photo", widget: "image" }
+      - { label: "Foto principal (miniatura)", name: "thumb", widget: "image", required: false }
