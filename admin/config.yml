@@ -13,6 +13,8 @@ collections:
     label_singular: "Producto"
     folder: "content/productos"
     create: true
+    extension: "json"
+    format: "json"
     slug: "producto-{{fields.id}}"
     identifier_field: title
     summary: "{{title}} — {{price}} ({{category}})"
