@@ -31,7 +31,7 @@ function main() {
     item.photos = (item.photos || []).map(cleanPath).filter(Boolean);
     item.thumb = cleanPath(item.thumb) || item.photos[0] || '';
     item.code = item.code || '';
-    item.category = item.category || 'Otros';
+    item.category = Array.isArray(item.category) ? item.category : (item.category ? [item.category] : []);
     return item;
   });
 

@@ -23,8 +23,35 @@ let currentItem = null;
 let currentPhotoIndex = 0;
 let currentCategory = 'Todas';
 
+const CATEGORY_ORDER = [
+  'Nuevos ingresos',
+  'Cámaras analógicas',
+  'Cámaras point and shoot',
+  'Cámaras digitales',
+  'Cámaras nuevas en caja sin uso',
+  'Lentes',
+  'Flashes',
+  'Raras/coleccionables',
+  'TLR',
+  'Micro 4/3',
+  'Cámaras de fuelle',
+  'Filmadoras a cuerda',
+  'Otros',
+  'Para deco o restauración',
+  'Nikon',
+  'Canon',
+  'Pentax',
+  'Olympus',
+  'Yashica',
+  'Fuji',
+  'Soviéticas',
+  'Minolta',
+  'Kodak',
+  'Sony'
+];
+
 function renderCategoryBar() {
-  const categories = ['Todas', ...new Set(ITEMS.map(i => i.category || 'Otros'))];
+  const categories = ['Todas', ...CATEGORY_ORDER];
   categoryBar.innerHTML = '';
   categories.forEach(cat => {
     const btn = document.createElement('button');
@@ -75,7 +102,7 @@ function applyFilter() {
   const q = searchInput.value.trim().toLowerCase();
   let filtered = ITEMS;
   if (currentCategory !== 'Todas') {
-    filtered = filtered.filter(i => (i.category || 'Otros') === currentCategory);
+    filtered = filtered.filter(i => Array.isArray(i.category) && i.category.includes(currentCategory));
   }
   if (q) {
     filtered = filtered.filter(i => i.title.toLowerCase().includes(q) || i.description.toLowerCase().includes(q));
@@ -89,7 +116,7 @@ searchInput.addEventListener('input', applyFilter);
 function openModal(item) {
   currentItem = item;
   currentPhotoIndex = 0;
-  modalCategory.textContent = item.category || '';
+  modalCategory.textContent = Array.isArray(item.category) ? item.category.join(' · ') : (item.category || '');
   modalTitle.textContent = item.title;
   modalPrice.textContent = item.price;
   if (item.code) {
