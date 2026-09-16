@@ -1,17 +1,26 @@
 {
   "id": 17,
   "title": "Cámara Kodak Retina Type 117 con Kodak Anastigmat Ektar 50mm f/3.5 Compur-Rapid",
-  "price": "$700.000",
-  "category": [],
-  "code": "",
+  "price": "$540.000",
+  "category": [
+    "Raras/coleccionables",
+    "Cámaras de fuelle",
+    "Kodak"
+  ],
+  "code": "266",
   "description": "Una de las primeras Kodak Retina fabricadas en Alemania con lente Ektar de gran prestigio óptico y diseño plegable compacto que marcó el inicio de la serie Retina\n\nEstado\n\nMuy buen estado estético general para su antigüedad\n\nFuelle en buen estado visual\n\nLente limpio con leve suciedad propia del uso y los años sin daños\n\nObturador Compur-Rapid presente con todos sus mandos originales\n\nVisor y mandos completos\n\nPresenta marcas normales de uso y paso del tiempo acordes a una cámara de más de 85 años\n\nDatos técnicos\nFormato 35 mm\nFabricación aproximada entre 1934 y 1935\nLente Kodak Anastigmat Ektar 50 mm f/3.5\nObturador Compur-Rapid\nVelocidades B 1 a 1/500 s\nEnfoque manual por estimación de distancia\nDiafragma f/3.5 a f/16\nConstrucción metálica con fuelle plegable\nZapato para accesorios\nFabricada en Alemania\n\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "IMG-20260708-WA0078.jpg",
-    "IMG-20260708-WA0079.jpg",
-    "IMG-20260708-WA0080.jpg",
-    "IMG-20260708-WA0081.jpg",
-    "IMG-20260708-WA0082.jpg",
-    "IMG-20260708-WA0084.jpg"
+    "images/IMG-20260708-WA0086.jpg",
+    "/images/IMG-20260708-WA0090.jpg",
+    "images/IMG-20260708-WA0087.jpg",
+    "/images/IMG-20260708-WA0085.jpg",
+    "images/IMG-20260708-WA0084.jpg",
+    "/images/IMG-20260708-WA0089.jpg",
+    "images/IMG-20260708-WA0088.jpg",
+    "/images/IMG-20260708-WA0093.jpg",
+    "images/IMG-20260708-WA0092.jpg",
+    "/images/IMG-20260708-WA0095.jpg",
+    "images/IMG-20260708-WA0094.jpg"
   ],
-  "thumb": "IMG-20260708-WA0078.jpg"
+  "thumb": "/images/IMG-20260708-WA0086.jpg"
 }
