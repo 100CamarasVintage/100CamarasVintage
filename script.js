@@ -21,7 +21,7 @@ const modalClose = document.getElementById('modalClose');
 
 let currentItem = null;
 let currentPhotoIndex = 0;
-let currentCategory = 'Todas';
+let currentCategories = new Set(); // vacio = 'Todas'
 
 const CATEGORY_ORDER = [
   'Nuevos ingresos',
@@ -54,11 +54,18 @@ function renderCategoryBar() {
   const categories = ['Todas', ...CATEGORY_ORDER];
   categoryBar.innerHTML = '';
   categories.forEach(cat => {
+    const isActive = cat === 'Todas' ? currentCategories.size === 0 : currentCategories.has(cat);
     const btn = document.createElement('button');
-    btn.className = 'category-pill' + (cat === currentCategory ? ' active' : '');
+    btn.className = 'category-pill' + (isActive ? ' active' : '');
     btn.textContent = cat;
     btn.addEventListener('click', () => {
-      currentCategory = cat;
+      if (cat === 'Todas') {
+        currentCategories.clear();
+      } else if (currentCategories.has(cat)) {
+        currentCategories.delete(cat);
+      } else {
+        currentCategories.add(cat);
+      }
       renderCategoryBar();
       applyFilter();
     });
@@ -101,8 +108,8 @@ function updateCount(n) {
 function applyFilter() {
   const q = searchInput.value.trim().toLowerCase();
   let filtered = ITEMS;
-  if (currentCategory !== 'Todas') {
-    filtered = filtered.filter(i => Array.isArray(i.category) && i.category.includes(currentCategory));
+  if (currentCategories.size > 0) {
+    filtered = filtered.filter(i => Array.isArray(i.category) && [...currentCategories].every(c => i.category.includes(c)));
   }
   if (q) {
     filtered = filtered.filter(i => i.title.toLowerCase().includes(q) || i.description.toLowerCase().includes(q));
