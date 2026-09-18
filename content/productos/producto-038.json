@@ -2,11 +2,19 @@
   "id": 38,
   "title": "Black Olympus 35 mm",
   "price": "$150.000",
-  "category": [],
-  "code": "",
+  "category": [
+    "Cámaras analógicas",
+    "Olympus"
+  ],
+  "code": "286",
   "description": "Estado\nMuy buen estado estético general\nFuncionamiento según se aprecia en las pruebas realizadas\nLente limpio\nFlash incorporado operativo\nIncluye tapa de lente original\nIncluye funda y correa originales\n\nDatos técnicos\nCámara compacta analógica de 35 mm\nLente Olympus D.Zuiko 38 mm f/5.6 fabricado en Japón\nEnfoque por zonas\nExposición automática\nFlash electrónico incorporado retráctil\nAvance y rebobinado manual de película\nUtiliza película de 35 mm\n\nUna compacta fabricada en Japón que conserva el reconocido lente D.Zuiko, una óptica muy valorada por su nitidez y el característico contraste de Olympus\nSu funcionamiento simple y totalmente pensado para salir a fotografiar la convierten en una excelente compañera para quienes quieren iniciarse en la fotografía analógica o buscan una cámara confiable para llevar de viaje\nSe entrega completa con funda, correa y tapa original, un conjunto cada vez menos frecuente de encontrar conservado\n\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "IMG-20260718-WA0120.jpg"
+    "images/IMG-20260718-WA0119.jpg",
+    "/images/IMG-20260718-WA0120.jpg",
+    "/images/IMG-20260718-WA0117.jpg",
+    "images/IMG-20260718-WA0116.jpg",
+    "/images/IMG-20260718-WA0118.jpg",
+    "images/IMG-20260718-WA0121.jpg"
   ],
-  "thumb": "IMG-20260718-WA0120.jpg"
+  "thumb": "images/IMG-20260718-WA0119.jpg"
 }
