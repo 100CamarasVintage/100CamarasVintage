@@ -2,20 +2,19 @@
   "id": 49,
   "title": "Minolta Maxxum 330si RZ + Quantaray MX AF 28-80mm f/3.5-5.6 Aspherical",
   "price": "$220.000",
-  "category": [],
-  "code": "",
+  "category": [
+    "Cámaras analógicas",
+    "Minolta"
+  ],
+  "code": "20",
   "description": "Estado\nMuy buen estado estético y funcional\nProbada y funcionando correctamente\nLente con óptica limpia\nPantallas LCD operativas\nIncluye correa\nFlash incorporado funcionando\n\nDatos técnicos\nCámara réflex analógica de 35 mm\nMontura Minolta A AF\nLente Quantaray MX AF 28-80mm f/3.5-5.6 Aspherical\nEnfoque automático\nModos Programa, Retrato, Paisaje, Acción y Primer Plano\nFlash incorporado retráctil\nAvance y rebobinado automáticos\nAutodisparador\nVelocidad de obturación electrónica\nCompatible con la amplia línea de lentes autofocus Minolta A\n\nUna réflex muy fácil de usar, ideal para iniciarse en fotografía analógica o para quienes buscan una cámara confiable con enfoque automático\nEl lente Aspherical ofrece un rendimiento superior al de los zoom básicos de la época, aportando mejor nitidez y menor distorsión en el rango angular\n\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "IMG-20260724-WA0013.jpg",
-    "IMG-20260724-WA0014.jpg",
-    "IMG-20260724-WA0018.jpg",
-    "IMG-20260724-WA0019.jpg",
-    "IMG-20260724-WA0021.jpg",
     "IMG-20260724-WA0022.jpg",
     "IMG-20260724-WA0023.jpg",
     "IMG-20260724-WA0024.jpg",
     "IMG-20260724-WA0025.jpg",
-    "IMG-20260724-WA0026.jpg"
+    "IMG-20260724-WA0026.jpg",
+    "/images/IMG-20260724-WA0027.jpg"
   ],
-  "thumb": "IMG-20260724-WA0013.jpg"
+  "thumb": "images/IMG-20260724-WA0022.jpg"
 }
