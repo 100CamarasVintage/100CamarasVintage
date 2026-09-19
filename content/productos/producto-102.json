@@ -2,14 +2,12 @@
   "id": 102,
   "title": "POLAROID 900 AF BIG FINDER 35mm",
   "price": "$100.000",
-  "category": [],
-  "code": "",
+  "category": [
+    "Cámaras point and shoot"
+  ],
+  "code": "349",
   "description": "Estado: buen estado estético y funcional\nCámara probada y funcionando correctamente\nAutofoco funcionando\nFlash incorporado funcionando\nAvance y rebobinado motorizado funcionando\nCompartimiento de película limpio\nIncluye correa\nCámara compacta analógica point & shoot para película de 35 mm formato 24 x 36 mm\nObjetivo Polaroid AF Hybrid Lens 34 mm f/5.6\nAutofoco de 2 zonas\nDistancia mínima de enfoque aproximada de 0,6 m\nExposición automática\nVelocidad de obturación 1/125 s\nFlash electrónico incorporado automático y desconectable\nFunción de reducción de ojos rojos mediante preflash\nVisor Big Finder de gran tamaño, una de las características distintivas del modelo\nCarga automática de película\nAvance y rebobinado motorizado\nLectura DX automática para películas entre ISO 100 y 800\nContador de exposiciones\nTemporizador\nAlimentación mediante 2 pilas AA (no incluidas)\n\nLanzada a partir de 1998 como parte de la serie Polaroid 900, resulta particular porque pese a llevar la marca Polaroid no utiliza película instantánea sino rollos convencionales de 35 mm\nSu enorme visor Big Finder, diseño redondeado y combinación de colores verde grisáceo y champagne le dan una estética muy característica de finales de los años 90\nEs una compacta sencilla de utilizar, con focal de 34 mm muy adecuada para fotografía cotidiana, viajes y fotografía urbana\n\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "IMG-20260812-WA0017.jpg",
-    "IMG-20260812-WA0014.jpg",
-    "IMG-20260812-WA0016.jpg",
-    "IMG-20260812-WA0018.jpg",
     "IMG-20260812-WA0029.jpg",
     "IMG-20260812-WA0030.jpg",
     "IMG-20260812-WA0032.jpg",
@@ -18,5 +16,5 @@
     "IMG-20260812-WA0035.jpg",
     "IMG-20260812-WA0034.jpg"
   ],
-  "thumb": "IMG-20260812-WA0017.jpg"
+  "thumb": "images/IMG-20260812-WA0030.jpg"
 }
