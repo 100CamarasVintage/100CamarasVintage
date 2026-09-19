@@ -1,21 +1,21 @@
 {
   "id": 87,
   "title": "Olympus 35 LC Cámara Analógica Telemétrica 35mm Olympus G.Zuiko 42mm f/1.7",
-  "price": "$460.000",
+  "price": "$355.000",
   "category": [
-    "Lentes"
+    "Cámaras analógicas",
+    "Olympus"
   ],
-  "code": "",
+  "code": "335",
   "description": "Estado\nMuy buen estado estético\nFuncionamiento mecánico correcto\nIncluye tapa original Olympus del lente\n\nDatos técnicos\nFormato 35 mm\nCámara telemétrica de enfoque manual\nObjetivo Olympus G.Zuiko 42 mm f/1.7 de 7 elementos\nObturador central Copal\nVelocidades de 1 segundo a 1/500 s más modo B\nEnfoque desde 0,8 m hasta infinito\nFotómetro TTL CdS con medición a través del lente\nControl de exposición mediante indicador en el visor\nZapta para flash y sincronización X\nFabricada en Japón entre 1967 y 1968\n\nLa Olympus 35 LC fue el modelo más avanzado de la serie 35 antes de la llegada de la RC y es especialmente apreciada por su luminoso G.Zuiko f/1.7 y su sistema de medición TTL, una característica muy poco común en telemétricas compactas de su época\nIdeal tanto para fotografía analógica como para coleccionistas que buscan una Olympus clásica de alta gama\n\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "IMG-20260808-WA0004.jpg",
-    "IMG-20260808-WA0005.jpg",
-    "IMG-20260808-WA0006.jpg",
-    "IMG-20260808-WA0007.jpg",
-    "IMG-20260808-WA0008.jpg",
-    "IMG-20260808-WA0009.jpg",
-    "IMG-20260808-WA0010.jpg",
-    "IMG-20260808-WA0012.jpg"
+    "images/IMG-20260808-WA0013.jpg",
+    "IMG-20260808-WA0012.jpg",
+    "/images/IMG-20260808-WA0014.jpg",
+    "/images/IMG-20260808-WA0015.jpg",
+    "images/IMG-20260808-WA0016.jpg",
+    "/images/IMG-20260808-WA0017.jpg",
+    "images/IMG-20260808-WA0018.jpg"
   ],
-  "thumb": "IMG-20260808-WA0004.jpg"
+  "thumb": "images/IMG-20260808-WA0013.jpg"
 }
