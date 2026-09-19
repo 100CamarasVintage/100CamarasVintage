@@ -1,21 +1,21 @@
 {
   "id": 74,
   "title": "Sony Cyber-shot DSC-W810",
-  "price": "$390.000",
-  "category": [],
-  "code": "",
+  "price": "$370.000",
+  "category": [
+    "Cámaras digitales",
+    "Sony"
+  ],
+  "code": "323",
   "description": "Estado\nExcelente estado estético y funcional\nPantalla protegida con film desde su uso\nDatos técnicos\nSensor CCD de 20,1 megapíxeles\nLente Sony 4,6-27,6 mm f/3.5-6.5\nZoom óptico 6x\nSteadyShot para estabilización de imagen\nGrabación de video HD 720p\nPantalla LCD de 2,7 pulgadas\nDetección de rostros y modo panorámico\nCompatible con tarjetas SD SDHC SDXC y Memory Stick Micro\nBatería recargable Sony NP-BN\n\nCompacta, liviana y muy fácil de transportar, ideal para viajes o uso diario gracias a su elegante color plateado y la excelente calidad de imagen característica de las Cyber-shot\n\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "IMG-20260802-WA0210.jpg",
-    "IMG-20260802-WA0211.jpg",
-    "IMG-20260802-WA0213.jpg",
-    "IMG-20260802-WA0214.jpg",
-    "IMG-20260802-WA0215.jpg",
-    "IMG-20260802-WA0231.jpg",
     "IMG-20260802-WA0232.jpg",
+    "IMG-20260802-WA0231.jpg",
     "IMG-20260802-WA0233.jpg",
     "IMG-20260802-WA0234.jpg",
-    "IMG-20260802-WA0235.jpg"
+    "IMG-20260802-WA0235.jpg",
+    "images/IMG-20260802-WA0236.jpg",
+    "/images/IMG-20260802-WA0237.jpg"
   ],
-  "thumb": "IMG-20260802-WA0210.jpg"
+  "thumb": "/images/IMG-20260802-WA0232.jpg"
 }
