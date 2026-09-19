@@ -2,17 +2,22 @@
   "id": 92,
   "title": "Canon Sure Shot 85 Zoom Date 38–85mm",
   "price": "$220.000",
-  "category": [],
-  "code": "",
+  "category": [
+    "Cámaras point and shoot",
+    "Canon"
+  ],
+  "code": "339",
   "description": "Estado: Excelente estado estético y funcional, con caja original, manual y correa\nCámara compacta analógica automática para película de 35 mm\nLente Canon Zoom 38–85 mm\nAutofoco activo\nExposición automática\nZoom motorizado 2,2x\nFlash incorporado con distintos modos de funcionamiento\nReducción de ojos rojos\nTemporizador\nAvance y rebobinado automático de película\nLectura automática de sensibilidad DX\nDisplay LCD superior con contador de exposiciones\nVersión Date con fechador electrónico y display independiente en la tapa trasera\nSelector de modo Auto y funciones de flash\nIndicadores luminosos de enfoque y flash junto al visor\nFormato compacto point and shoot\nTerminación negra\nIncluye caja original Canon Sure Shot 85 Zoom, manual y correa, un conjunto cada vez menos habitual de encontrar completo\n\nModelo muy atractivo dentro de las Canon compactas de los años 90 por combinar un angular de 38 mm con tele corto de 85 mm, cubriendo fotografía cotidiana, viajes, calle y retratos sin necesidad de cambiar lentes\n\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "IMG-20260809-WA0109.jpg",
-    "IMG-20260809-WA0110.jpg",
-    "IMG-20260809-WA0111.jpg",
-    "IMG-20260809-WA0112.jpg",
-    "IMG-20260809-WA0113.jpg",
-    "IMG-20260809-WA0114.jpg",
-    "IMG-20260809-WA0117.jpg"
+    "images/IMG-20260809-WA0125.jpg",
+    "IMG-20260809-WA0117.jpg",
+    "/images/IMG-20260809-WA0118.jpg",
+    "/images/IMG-20260809-WA0120.jpg",
+    "images/IMG-20260809-WA0119.jpg",
+    "/images/IMG-20260809-WA0121.jpg",
+    "images/IMG-20260809-WA0122.jpg",
+    "/images/IMG-20260809-WA0124.jpg",
+    "images/IMG-20260809-WA0123.jpg"
   ],
-  "thumb": "IMG-20260809-WA0109.jpg"
+  "thumb": "images/IMG-20260809-WA0125.jpg"
 }
