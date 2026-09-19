@@ -63,7 +63,7 @@ const CATEGORY_ICONS = {
   'Micro 4/3': 'images/brand/icon-micro43.png',
   'Cámaras de fuelle': 'images/brand/icon-fuelles.png',
   'Filmadoras a cuerda': 'images/brand/icon-acuerda.png',
-  'Otros': 'images/brand/icon-otros.png',
+  'Otros': 'images/brand/icon-tripode.png',
   'Para deco o restauración': 'images/brand/icon-decoyrestauracion.png'
 };
 
