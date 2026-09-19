@@ -2,17 +2,20 @@
   "id": 109,
   "title": "Olympus Camedia D-380 2.0 Megapixel",
   "price": "$100.000",
-  "category": [],
-  "code": "",
+  "category": [
+    "Cámaras digitales",
+    "Olympus"
+  ],
+  "code": "355",
   "description": "Estado\nUsada en buen estado general para su antigüedad\nProbada y funcionando correctamente\nPantalla LCD funcionando\nFlash funcionando\nÓptica en muy buen estado visual\nTapa frontal deslizante funcionando correctamente\nIncluye caja original, manuales, cable USB original y dos tarjetas SmartMedia de 8 MB\n\nDatos técnicos\nCámara digital compacta presentada en 2002\nSensor CCD de 1/3,2 pulgadas\n2,11 megapíxeles totales y 1,96 megapíxeles efectivos\nResolución máxima 1600 x 1208 píxeles\nObjetivo Olympus fijo de 4,5 mm f/4\nEquivalente a 35 mm en formato 35 mm\nConstrucción óptica de 5 elementos en 5 grupos\nAperturas f/4 y f/8\nVelocidades de obturación de 1/2 a 1/2000 s\nModo nocturno hasta 1 segundo\nEnfoque fijo desde 0,6 m a infinito\nModo macro desde aproximadamente 25 a 60 cm\nMedición Digital ESP\nZoom digital\nVisor óptico\nPantalla LCD TFT color de 1,6 pulgadas\nFlash incorporado\nGrabación de fotografías JPEG\nGrabación de pequeños clips de video QuickTime Motion JPEG\nMemoria interna de 1 MB\nCompatible con tarjetas SmartMedia de 4 MB a 128 MB\nAlimentación mediante cuatro pilas AA o dos baterías CR-V3 (no incluidas)\nConexión USB\nPeso aproximado de 190 gramos sin pilas ni tarjeta\nDescripción\n\nUna auténtica digicam de comienzos de los 2000, con sensor CCD de apenas 2 megapíxeles y una estética de imagen muy característica de aquella primera generación digital\nEl objetivo fijo equivalente a 35 mm y la ausencia de zoom óptico la convierten en una cámara extremadamente sencilla y directa de usar\nSu tapa frontal deslizante funciona además como encendido y protección del objetivo, uno de los diseños más reconocibles de las primeras Olympus Camedia\nEste ejemplar tiene un valor adicional importante por conservar caja original, documentación, cable y dos tarjetas SmartMedia de 8 MB, accesorios cada vez menos habituales de encontrar junto con estas cámaras\n\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "IMG-20260814-WA0048.jpg",
     "IMG-20260814-WA0049.jpg",
+    "IMG-20260814-WA0048.jpg",
     "IMG-20260814-WA0050.jpg",
     "IMG-20260814-WA0051.jpg",
     "IMG-20260814-WA0052.jpg",
     "IMG-20260814-WA0053.jpg",
     "IMG-20260814-WA0055.jpg"
   ],
-  "thumb": "IMG-20260814-WA0048.jpg"
+  "thumb": "images/IMG-20260814-WA0052.jpg"
 }
