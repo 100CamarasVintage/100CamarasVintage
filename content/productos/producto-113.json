@@ -1,16 +1,15 @@
 {
   "id": 113,
   "title": "Canon Prima Zoom 76 AiAF 38-76mm",
-  "price": "$210.000",
-  "category": [],
-  "code": "",
+  "price": "$280.000",
+  "category": [
+    "Cámaras point and shoot",
+    "Canon"
+  ],
+  "code": "359",
   "description": "Estado: Excelente estado general, muy bien conservada y con funcionamiento probado\nCámara compacta analógica para película de 35 mm\nLente Canon Zoom Lens 38-76mm\nZoom óptico 2x motorizado\nSistema de enfoque automático AiAF\nCarga y avance de película automáticos\nRebobinado automático\nLectura automática de sensibilidad mediante código DX\nFlash electrónico integrado\nModos de flash seleccionables\nTemporizador automático\nContador de exposiciones en display LCD superior\nVisor óptico\nTapa trasera con ventana de comprobación de película\nCorrea Canon incluida\nFunda Canon original incluida\nTerminación plateada con detalles negros\n\nCompacta Canon de los años 90 con estética clásica point and shoot, ideal para fotografía callejera, viajes y para quienes buscan volver al formato 35 mm con una cámara completamente automática\nSu zoom 38-76 mm ofrece un rango muy práctico desde fotografía cotidiana hasta retratos y la unidad se destaca por su excelente presentación y por conservar funda y correa Canon\n\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "IMG-20260815-WA0068.jpg",
-    "IMG-20260815-WA0067.jpg",
-    "IMG-20260815-WA0066.jpg",
-    "IMG-20260815-WA0063.jpg",
-    "IMG-20260815-WA0065.jpg"
+    "/images/IMG-20260815-WA0093.jpg"
   ],
-  "thumb": "IMG-20260815-WA0068.jpg"
+  "thumb": "images/IMG-20260815-WA0093.jpg"
 }
