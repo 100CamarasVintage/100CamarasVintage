@@ -50,6 +50,23 @@ const CATEGORY_ORDER = [
   'Sony'
 ];
 
+const CATEGORY_ICONS = {
+  'Nuevos ingresos': 'images/brand/icon-nuevoingresos.png',
+  'Cámaras analógicas': 'images/brand/icon-reflex.png',
+  'Cámaras point and shoot': 'images/brand/icon-compacta.png',
+  'Cámaras digitales': 'images/brand/icon-digitales.png',
+  'Cámaras nuevas en caja sin uso': 'images/brand/icon-cajasinuso.png',
+  'Lentes': 'images/brand/icon-lentes.png',
+  'Flashes': 'images/brand/icon-flash.png',
+  'Raras/coleccionables': 'images/brand/icon-raras.png',
+  'TLR': 'images/brand/icon-tlr.png',
+  'Micro 4/3': 'images/brand/icon-micro43.png',
+  'Cámaras de fuelle': 'images/brand/icon-fuelles.png',
+  'Filmadoras a cuerda': 'images/brand/icon-acuerda.png',
+  'Otros': 'images/brand/icon-otros.png',
+  'Para deco o restauración': 'images/brand/icon-decoyrestauracion.png'
+};
+
 function renderCategoryBar() {
   const categories = ['Todas', ...CATEGORY_ORDER];
   categoryBar.innerHTML = '';
@@ -57,7 +74,14 @@ function renderCategoryBar() {
     const isActive = cat === 'Todas' ? currentCategories.size === 0 : currentCategories.has(cat);
     const btn = document.createElement('button');
     btn.className = 'category-pill' + (isActive ? ' active' : '');
-    btn.textContent = cat;
+    if (CATEGORY_ICONS[cat]) {
+      const icon = document.createElement('img');
+      icon.src = CATEGORY_ICONS[cat];
+      icon.alt = '';
+      icon.className = 'category-icon';
+      btn.appendChild(icon);
+    }
+    btn.appendChild(document.createTextNode(cat));
     btn.addEventListener('click', () => {
       if (cat === 'Todas') {
         currentCategories.clear();
