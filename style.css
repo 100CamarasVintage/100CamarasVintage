@@ -67,11 +67,10 @@ a { color: inherit; }
   color: var(--forest);
 }
 
-.wordmark-script {
-  font-family: 'Yellowtail', cursive;
-  font-size: 32px;
-  color: var(--terracotta);
-  transform: rotate(-3deg);
+.wordmark-vintage-img {
+  height: 34px;
+  width: auto;
+  display: block;
 }
 
 .wordmark-bottom {
