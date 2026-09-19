@@ -1,20 +1,20 @@
 {
   "id": 115,
   "title": "SMC PENTAX-F 35-80mm f/4-5.6 AF",
-  "price": "$120.000",
+  "price": "$95.000",
   "category": [
-    "Lentes"
+    "Lentes",
+    "Pentax"
   ],
-  "code": "",
+  "code": "361",
   "description": "Muy buen estado general\nExterior bien conservado con leves marcas normales de uso\nCristales visualmente limpios según se aprecia en las fotografías\nMontura metálica en muy buen estado\nDatos técnicos\nZoom 35-80 mm\nApertura máxima f/4 en 35 mm y f/5.6 en 80 mm\nApertura mínima f/22\nAutofoco por sistema mecánico del cuerpo de cámara\nEnfoque manual disponible\nRevestimiento óptico SMC Pentax\nAnillo de diafragma con posición A\nMontura Pentax KAF\n\nCompatible con cámaras analógicas Pentax AF como SFX, SFXn, Z-1, Z-1p, Z-10, Z-20, Z-50P, MZ-3, MZ-5, MZ-5n, MZ-6, MZ-7 y MZ-50 entre otras\nCompatible también con numerosas réflex digitales Pentax de montura K como series *ist D, K10D, K20D, K-5, K-7, K-30, K-50, K-70, KP y otras, conservando autofocus en cuerpos compatibles\nRango 35-80 mm muy versátil para fotografía general, calle, viajes y retrato\nObjetivo original Pentax de la serie F, una generación interesante por combinar construcción compacta, montura metálica, autofocus y anillo físico de diafragma\n\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "IMG-20260815-WA0120.jpg",
-    "IMG-20260815-WA0123.jpg",
-    "IMG-20260815-WA0124.jpg",
-    "IMG-20260815-WA0125.jpg",
-    "IMG-20260815-WA0126.jpg",
-    "IMG-20260815-WA0127.jpg",
-    "IMG-20260815-WA0128.jpg"
+    "images/IMG-20260815-WA0128.jpg",
+    "/images/IMG-20260815-WA0129.jpg",
+    "images/IMG-20260815-WA0130.jpg",
+    "/images/IMG-20260815-WA0131.jpg",
+    "/images/IMG-20260815-WA0132.jpg",
+    "images/IMG-20260815-WA0134.jpg"
   ],
-  "thumb": "IMG-20260815-WA0120.jpg"
+  "thumb": "images/IMG-20260815-WA0128.jpg"
 }
