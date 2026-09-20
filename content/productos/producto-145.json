@@ -3,14 +3,16 @@
   "title": "Nikon Nikkor 50mm f/1.4 AI",
   "price": "$390.000",
   "category": [
-    "Lentes"
+    "Lentes",
+    "Nikon"
   ],
-  "code": "",
+  "code": "389",
   "description": "Estado\nExcelente estado general, tanto estético como óptico\nÓpticas limpias y transparentes, sin hongos ni neblina visibles\nEnfoque manual suave y diafragma funcionando correctamente\n\nDatos técnicos\nDistancia focal fija de 50 mm\nApertura máxima f/1.4\nApertura mínima f/16\nMontura Nikon F\nVersión AI\nFormato Full Frame 35 mm\nEnfoque manual\nConstrucción óptica de 7 elementos en 6 grupos\nDiafragma de 7 palas\nDistancia mínima de enfoque de 0,45 m\nRosca para filtros de 52 mm\nConstrucción metálica\nMade in Japan\nCompatible con Nikon FM, FM2, FM3A, FE, FE2, FA, FG, F3, F4, F5, F6 y demás cámaras Nikon compatibles con ópticas AI\nCompatible con numerosas Nikon DSLR con enfoque manual y medición según el cuerpo\nCompatible con Nikon Z mediante adaptador FTZ o FTZ II con enfoque manual\n\nUno de los 50mm clásicos más representativos de Nikon, con apertura f/1.4 y la construcción metálica característica de los Nikkor manuales de esta época\nEsta unidad suma un elemento poco habitual en el mercado de segunda mano:\n\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "IMG-20260823-WA0248.jpg",
-    "IMG-20260823-WA0249.jpg",
-    "IMG-20260823-WA0268.jpg"
+    "images/IMG-20260823-WA0271.jpg",
+    "IMG-20260823-WA0268.jpg",
+    "/images/IMG-20260823-WA0269.jpg",
+    "images/IMG-20260823-WA0270.jpg"
   ],
-  "thumb": "IMG-20260823-WA0248.jpg"
+  "thumb": "images/IMG-20260823-WA0271.jpg"
 }
