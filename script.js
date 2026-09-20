@@ -5,6 +5,7 @@ const searchInput = document.getElementById('searchInput');
 const itemCount = document.getElementById('itemCount');
 const emptyState = document.getElementById('emptyState');
 const categoryBar = document.getElementById('categoryBar');
+const categorySections = document.getElementById('categorySections');
 
 const modalOverlay = document.getElementById('modalOverlay');
 const modalImage = document.getElementById('modalImage');
@@ -97,6 +98,65 @@ function renderCategoryBar() {
   });
 }
 
+function renderPreviewRow(item) {
+  const row = document.createElement('div');
+  row.className = 'preview-row';
+  row.innerHTML = `
+    <img class="preview-thumb" src="images/${item.thumb}" alt="${escapeHtml(item.title)}" loading="lazy">
+    <div class="preview-info">
+      <div class="preview-title">${escapeHtml(item.title)}</div>
+      <div class="preview-price">${escapeHtml(item.price)}</div>
+    </div>
+  `;
+  row.addEventListener('click', () => openModal(item));
+  return row;
+}
+
+function renderSections() {
+  categorySections.innerHTML = '';
+  CATEGORY_ORDER.forEach(cat => {
+    const items = ITEMS.filter(i => Array.isArray(i.category) && i.category.includes(cat));
+    if (items.length === 0) return;
+
+    const section = document.createElement('div');
+    section.className = 'category-section';
+
+    const header = document.createElement('div');
+    header.className = 'category-section-header';
+
+    const title = document.createElement('div');
+    title.className = 'category-section-title';
+    if (CATEGORY_ICONS[cat]) {
+      const icon = document.createElement('img');
+      icon.src = CATEGORY_ICONS[cat];
+      icon.alt = '';
+      title.appendChild(icon);
+    }
+    title.appendChild(document.createTextNode(cat));
+    header.appendChild(title);
+
+    const verTodo = document.createElement('button');
+    verTodo.className = 'ver-todo-btn';
+    verTodo.textContent = 'Ver todo';
+    verTodo.addEventListener('click', () => {
+      currentCategories = new Set([cat]);
+      renderCategoryBar();
+      applyFilter();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    header.appendChild(verTodo);
+
+    section.appendChild(header);
+
+    const list = document.createElement('div');
+    list.className = 'category-section-list';
+    items.slice(0, 3).forEach(item => list.appendChild(renderPreviewRow(item)));
+    section.appendChild(list);
+
+    categorySections.appendChild(section);
+  });
+}
+
 function renderGrid(items) {
   grid.innerHTML = '';
   items.forEach(item => {
@@ -131,6 +191,20 @@ function updateCount(n) {
 
 function applyFilter() {
   const q = searchInput.value.trim().toLowerCase();
+  const showSections = currentCategories.size === 0 && !q;
+
+  if (showSections) {
+    categorySections.hidden = false;
+    grid.hidden = true;
+    emptyState.hidden = true;
+    renderSections();
+    updateCount(ITEMS.length);
+    return;
+  }
+
+  categorySections.hidden = true;
+  grid.hidden = false;
+
   let filtered = ITEMS;
   if (currentCategories.size > 0) {
     filtered = filtered.filter(i => Array.isArray(i.category) && [...currentCategories].every(c => i.category.includes(c)));
@@ -204,5 +278,4 @@ document.addEventListener('keydown', (e) => {
 
 // init
 renderCategoryBar();
-renderGrid(ITEMS);
-updateCount(ITEMS.length);
+applyFilter();
