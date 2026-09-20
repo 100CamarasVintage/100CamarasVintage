@@ -35,8 +35,20 @@ function main() {
     return item;
   });
 
-  // Ordenar: más nuevos primero (por id descendente). Ajustable.
-  items.sort((a, b) => (b.id || 0) - (a.id || 0));
+  // Ordenar: primero los que tienen "orden" manual asignado (de menor a mayor),
+  // y despues el resto, mas nuevos primero (por id descendente).
+  function ordenKey(item) {
+    const n = Number(item.orden);
+    return (item.orden !== undefined && item.orden !== null && item.orden !== '' && !isNaN(n))
+      ? n
+      : Infinity;
+  }
+  items.sort((a, b) => {
+    const ka = ordenKey(a);
+    const kb = ordenKey(b);
+    if (ka !== kb) return ka - kb;
+    return (b.id || 0) - (a.id || 0);
+  });
 
   const json = JSON.stringify(items, null, 0);
   const output = `const ITEMS = ${json};\n`;
