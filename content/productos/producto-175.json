@@ -1,26 +1,20 @@
 {
-  "id": 175,
-  "title": "SAMSUNG SLIM ZOOM 130S 35mm POINT & SHOOT – ZOOM 38-130mm SUPER MACRO",
-  "price": "$155.000",
-  "category": [],
-  "code": "",
-  "description": "Estado: buen estado general, probada y funcionando correctamente, pantalla LCD operativa, zoom, flash, enfoque, disparo y avance funcionando, presenta marcas normales de uso visibles en las fotos\n\nDatos técnicos:\nCámara compacta analógica para película 35 mm\nObjetivo Samsung Zoom 38-130 mm\nZoom óptico aproximadamente 3,4x\nAutofocus\nModo Super Macro\nFlash incorporado\nModos de flash Auto, Fill-In, Red Eye y Off\nPantalla LCD superior\nControl electrónico de zoom\nTemporizador\nAvance y rebobinado automáticos\nModo Snap\nCorrea incluida\n\nCompacta Samsung de fines de la era analógica con un rango de zoom muy versátil de 38 a 130 mm, permite pasar de fotografía cotidiana y viajes a retratos y primeros planos sin cambiar de lente, una point and shoot completa y fácil de usar con estética típica de los años 90\n\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "IMG-20260905-WA0109.jpg",
-    "IMG-20260905-WA0122.jpg",
-    "IMG-20260905-WA0118.jpg",
-    "IMG-20260905-WA0114.jpg",
-    "IMG-20260905-WA0121.jpg",
-    "IMG-20260905-WA0113.jpg",
-    "IMG-20260907-WA0092.jpg",
-    "IMG-20260907-WA0094.jpg",
-    "IMG-20260907-WA0087.jpg",
-    "IMG-20260907-WA0088.jpg",
-    "IMG-20260907-WA0090.jpg",
-    "IMG-20260907-WA0084.jpg",
-    "IMG-20260907-WA0091.jpg",
-    "IMG-20260905-WA0115.jpg"
+    "images/IMG-20260907-WA0269.jpg",
+    "IMG-20260905-WA0115.jpg",
+    "/images/IMG-20260907-WA0268.jpg",
+    "/images/IMG-20260907-WA0272.jpg",
+    "images/IMG-20260907-WA0266.jpg",
+    "/images/IMG-20260907-WA0273.jpg"
   ],
-  "thumb": "IMG-20260905-WA0109.jpg",
-  "orden": 1350
+  "price": "$155.000",
+  "orden": 1350,
+  "code": "421",
+  "thumb": "images/IMG-20260907-WA0269.jpg",
+  "title": "Samsung Slim Zoom 130S 35mm  ZOOM 38-130mm SUPER MACRO",
+  "id": 175,
+  "description": "Estado: buen estado general, probada y funcionando correctamente, pantalla LCD operativa, zoom, flash, enfoque, disparo y avance funcionando, presenta marcas normales de uso visibles en las fotos\n\nDatos técnicos:\nCámara compacta analógica para película 35 mm\nObjetivo Samsung Zoom 38-130 mm\nZoom óptico aproximadamente 3,4x\nAutofocus\nModo Super Macro\nFlash incorporado\nModos de flash Auto, Fill-In, Red Eye y Off\nPantalla LCD superior\nControl electrónico de zoom\nTemporizador\nAvance y rebobinado automáticos\nModo Snap\nCorrea incluida\n\nCompacta Samsung de fines de la era analógica con un rango de zoom muy versátil de 38 a 130 mm, permite pasar de fotografía cotidiana y viajes a retratos y primeros planos sin cambiar de lente, una point and shoot completa y fácil de usar con estética típica de los años 90\n\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
+  "category": [
+    "Cámaras point and shoot"
+  ]
 }
