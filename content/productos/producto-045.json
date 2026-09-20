@@ -17,5 +17,6 @@
     "/images/producto-045-06.jpg",
     "/images/producto-045-07.jpg"
   ],
-  "thumb": "/images/producto-045-01.jpg"
+  "thumb": "/images/producto-045-01.jpg",
+  "orden": 450
 }

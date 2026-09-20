@@ -20,5 +20,6 @@
     "/images/producto-209-10.jpg",
     "/images/producto-209-11.jpg"
   ],
-  "thumb": "/images/producto-209-01.jpg"
+  "thumb": "/images/producto-209-01.jpg",
+  "orden": 1200
 }
