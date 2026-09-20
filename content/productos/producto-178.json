@@ -1,30 +1,24 @@
 {
-  "id": 178,
-  "title": "Olympus M.Zuiko Digital ED 40-150mm f/4-5.6 R Silver",
-  "price": "$300.000",
-  "category": [
-    "Lentes"
-  ],
-  "code": "",
-  "description": "Estado: Usado en muy buen estado general, con mínimas marcas normales de uso. Óptica visualmente limpia. Incluye tapas delantera y trasera\n\nDatos técnicos\nMontura Micro Four Thirds M4/3\nDistancia focal 40-150 mm\nEquivalente en formato full frame 80-300 mm\nApertura máxima f/4-5.6\nApertura mínima f/22\nDistancia mínima de enfoque 0,9 m\nEnfoque automático MSC rápido y silencioso\nDiseño óptico 13 elementos en 10 grupos\nDiafragma de 7 palas\nRosca para filtros 58 mm\nPeso aproximado 190 g\nCompatible con cámaras Olympus OM-D y PEN y cámaras Panasonic Lumix Micro Four Thirds\nNo posee estabilizador óptico, utiliza la estabilización del cuerpo en cámaras Olympus compatibles\n\nTeleobjetivo extremadamente compacto y liviano, ideal para viajes, naturaleza, retratos, fotografía urbana y como primer tele para Micro Four Thirds. Su rango equivalente de 80-300 mm ofrece mucho alcance manteniendo un tamaño muy reducido. La versión plateada combina especialmente bien con los cuerpos Olympus PEN y OM-D\n\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "IMG-20260908-WA0017.jpg",
-    "IMG-20260908-WA0015.jpg",
-    "IMG-20260908-WA0013.jpg",
-    "IMG-20260908-WA0011.jpg",
-    "IMG-20260908-WA0012.jpg",
-    "IMG-20260908-WA0010.jpg",
-    "IMG-20260908-WA0016.jpg",
-    "IMG-20260908-WA0023.jpg",
-    "IMG-20260908-WA0032.jpg",
-    "IMG-20260908-WA0021.jpg",
-    "IMG-20260908-WA0033.jpg",
-    "IMG-20260908-WA0028.jpg",
-    "IMG-20260908-WA0031.jpg",
-    "IMG-20260908-WA0024.jpg",
-    "IMG-20260908-WA0030.jpg",
-    "IMG-20260908-WA0037.jpg"
+    "images/IMG-20260908-WA0038.jpg",
+    "IMG-20260908-WA0037.jpg",
+    "/images/IMG-20260908-WA0040.jpg",
+    "images/IMG-20260908-WA0036.jpg",
+    "/images/IMG-20260908-WA0041.jpg",
+    "images/IMG-20260908-WA0039.jpg",
+    "/images/IMG-20260908-WA0035.jpg",
+    "images/IMG-20260908-WA0034.jpg"
   ],
-  "thumb": "IMG-20260908-WA0017.jpg",
-  "orden": 970
+  "price": "$300.000",
+  "orden": 970,
+  "code": "424",
+  "thumb": "images/IMG-20260908-WA0038.jpg",
+  "title": "Olympus M.Zuiko Digital ED 40-150mm f/4-5.6 R Silver",
+  "id": 178,
+  "description": "Estado: Usado en muy buen estado general, con mínimas marcas normales de uso. Óptica visualmente limpia. Incluye tapas delantera y trasera\n\nDatos técnicos\nMontura Micro Four Thirds M4/3\nDistancia focal 40-150 mm\nEquivalente en formato full frame 80-300 mm\nApertura máxima f/4-5.6\nApertura mínima f/22\nDistancia mínima de enfoque 0,9 m\nEnfoque automático MSC rápido y silencioso\nDiseño óptico 13 elementos en 10 grupos\nDiafragma de 7 palas\nRosca para filtros 58 mm\nPeso aproximado 190 g\nCompatible con cámaras Olympus OM-D y PEN y cámaras Panasonic Lumix Micro Four Thirds\nNo posee estabilizador óptico, utiliza la estabilización del cuerpo en cámaras Olympus compatibles\n\nTeleobjetivo extremadamente compacto y liviano, ideal para viajes, naturaleza, retratos, fotografía urbana y como primer tele para Micro Four Thirds. Su rango equivalente de 80-300 mm ofrece mucho alcance manteniendo un tamaño muy reducido. La versión plateada combina especialmente bien con los cuerpos Olympus PEN y OM-D\n\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
+  "category": [
+    "Lentes",
+    "Micro 4/3",
+    "Olympus"
+  ]
 }
