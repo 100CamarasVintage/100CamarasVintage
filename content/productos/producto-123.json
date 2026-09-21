@@ -1,0 +1,24 @@
+{
+  "id": 123,
+  "title": "Lente Minolta MD Celtic 135mm f/3.5",
+  "price": "$300.000",
+  "category": [
+    "Lentes",
+    "Minolta"
+  ],
+  "code": "80",
+  "description": "Estado: Usado - Como nuevo\n\nLente Minolta MD Celtic 135mm f/3.5\nTeleobjetivo manual clásico para montura Minolta MD. Construcción sólida, enfoque suave y óptica nítida, ideal para retrato, detalles y fotografía creativa. Compatible con cámaras Minolta analógicas y con mirrorless vía adaptador.\n\n(La última foto fue tomada con este lente, en una cámara Nikon Z más adaptador)\n\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
+  "photos": [
+    "/images/producto-123-01.jpg",
+    "/images/producto-123-02.jpg",
+    "/images/producto-123-03.jpg",
+    "/images/producto-123-04.jpg",
+    "/images/producto-123-05.jpg",
+    "/images/producto-123-06.jpg",
+    "/images/producto-123-07.jpg",
+    "/images/producto-123-08.jpg",
+    "/images/producto-123-09.jpg",
+    "/images/producto-123-10.jpg"
+  ],
+  "thumb": "/images/producto-123-01.jpg"
+}
