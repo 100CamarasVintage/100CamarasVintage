@@ -231,17 +231,23 @@ function openModal(item) {
     modalCode.hidden = true;
   }
   modalDesc.textContent = item.description;
-  const msg = encodeURIComponent(`Hola! Te consulto por: ${item.title}`);
+  const directUrl = `${location.origin}${location.pathname}#producto-${item.id}`;
+  const codeText = item.code ? ` (Código: ${item.code})` : '';
+  const msg = encodeURIComponent(`Hola! Te consulto por: ${item.title}${codeText}\n${directUrl}`);
   modalWhatsapp.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
   renderDots();
   showPhoto(0);
   modalOverlay.hidden = false;
   document.body.style.overflow = 'hidden';
+  history.replaceState(null, '', `#producto-${item.id}`);
 }
 
 function closeModal() {
   modalOverlay.hidden = true;
   document.body.style.overflow = '';
+  if (location.hash.startsWith('#producto-')) {
+    history.replaceState(null, '', location.pathname + location.search);
+  }
 }
 
 function renderDots() {
@@ -276,6 +282,17 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') showPhoto(currentPhotoIndex + 1);
 });
 
+function openFromHash() {
+  const m = location.hash.match(/^#producto-(\d+)$/);
+  if (!m) return;
+  const id = Number(m[1]);
+  const item = ITEMS.find(i => i.id === id);
+  if (item) openModal(item);
+}
+
+window.addEventListener('hashchange', openFromHash);
+
 // init
 renderCategoryBar();
 applyFilter();
+openFromHash();
