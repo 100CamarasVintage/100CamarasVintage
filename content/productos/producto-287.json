@@ -2,7 +2,10 @@
   "id": 287,
   "title": "Camara digital Nikon Coolpix L810",
   "price": 300000,
-  "category": ["digital", "Nikon"],
+  "category": [
+    "digital",
+    "Nikon"
+  ],
   "code": "451",
   "description": "Nikon Coolpix L810\nEstado: Excelente estado general, funcionando correctamente, con caja original\nDatos técnicos: Cámara digital bridge de 16,1 MP\nSensor CCD de 1/2,3\"\nObjetivo Nikkor ED con zoom óptico 26x\nDistancia focal 4-104 mm f/3.1-5.9\nEquivalente en 35 mm aproximadamente a 22,5-585 mm\nEstabilización óptica VR\nPantalla LCD de 3\" y 921.000 puntos\nGrabación de video HD 720p\nFlash incorporado\nModo macro\nZoom gran angular de 22,5 mm, ideal para paisajes y arquitectura\nTeleobjetivo equivalente a 585 mm, muy útil para naturaleza, viajes y fotografía a distancia\nFunciona con 4 pilas AA, una ventaja importante porque no depende de baterías propietarias difíciles de conseguir\nUtiliza tarjetas SD/SDHC/SDXC\nIncluye tapa original Nikon, correa, tarjeta SD SanDisk de 4 GB, pilas y caja original\nBridge Nikon lanzada en 2012 que combina un rango de zoom enorme con un manejo muy sencillo. Su Nikkor 26x cubre desde un verdadero gran angular de 22,5 mm hasta 585 mm equivalentes sin necesidad de cambiar objetivos. Además utiliza sensor CCD de 16,1 MP, una característica que hoy despierta interés entre quienes buscan cámaras digitales de esa generación. Esta unidad se encuentra especialmente bien conservada y mantiene incluso su caja original\nÚltima foto tomada con la cámara.\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
@@ -14,7 +17,8 @@
     "/images/producto-287-06.jpg",
     "/images/producto-287-07.jpg",
     "/images/producto-287-08.jpg",
-    "/images/producto-287-09.jpg"
+    "/images/producto-287-09.jpg",
+    "/images/producto-287-10.jpg"
   ],
   "thumb": "/images/producto-287-01.jpg"
 }
