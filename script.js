@@ -24,6 +24,9 @@ const modalClose = document.getElementById('modalClose');
 const aboutBtn = document.getElementById('aboutBtn');
 const aboutOverlay = document.getElementById('aboutOverlay');
 const aboutModalClose = document.getElementById('aboutModalClose');
+const buyBtn = document.getElementById('buyBtn');
+const buyOverlay = document.getElementById('buyOverlay');
+const buyModalClose = document.getElementById('buyModalClose');
 
 let currentItem = null;
 let currentPhotoIndex = 0;
@@ -334,6 +337,26 @@ aboutOverlay.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (aboutOverlay.hidden) return;
   if (e.key === 'Escape') closeAbout();
+});
+
+function openBuy() {
+  buyOverlay.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeBuy() {
+  buyOverlay.hidden = true;
+  document.body.style.overflow = '';
+}
+
+buyBtn.addEventListener('click', openBuy);
+buyModalClose.addEventListener('click', closeBuy);
+buyOverlay.addEventListener('click', (e) => {
+  if (e.target === buyOverlay) closeBuy();
+});
+document.addEventListener('keydown', (e) => {
+  if (buyOverlay.hidden) return;
+  if (e.key === 'Escape') closeBuy();
 });
 
 function openFromHash() {
