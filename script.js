@@ -21,6 +21,10 @@ const galleryPrev = document.getElementById('galleryPrev');
 const galleryNext = document.getElementById('galleryNext');
 const modalClose = document.getElementById('modalClose');
 
+const aboutBtn = document.getElementById('aboutBtn');
+const aboutOverlay = document.getElementById('aboutOverlay');
+const aboutModalClose = document.getElementById('aboutModalClose');
+
 let currentItem = null;
 let currentPhotoIndex = 0;
 let currentCategories = new Set(); // vacio = 'Todas'
@@ -310,6 +314,26 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeModal();
   if (e.key === 'ArrowLeft') showPhoto(currentPhotoIndex - 1);
   if (e.key === 'ArrowRight') showPhoto(currentPhotoIndex + 1);
+});
+
+function openAbout() {
+  aboutOverlay.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeAbout() {
+  aboutOverlay.hidden = true;
+  document.body.style.overflow = '';
+}
+
+aboutBtn.addEventListener('click', openAbout);
+aboutModalClose.addEventListener('click', closeAbout);
+aboutOverlay.addEventListener('click', (e) => {
+  if (e.target === aboutOverlay) closeAbout();
+});
+document.addEventListener('keydown', (e) => {
+  if (aboutOverlay.hidden) return;
+  if (e.key === 'Escape') closeAbout();
 });
 
 function openFromHash() {

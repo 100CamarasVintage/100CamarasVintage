@@ -37,6 +37,7 @@
       <img src="images/brand/vintage-script.png" alt="Vintage" class="wordmark-vintage-img">
     </a>
     <div class="header-tools">
+      <button type="button" id="aboutBtn" class="about-btn">Quiénes somos</button>
       <div class="search-wrap">
         <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input type="text" id="searchInput" placeholder="Buscar cámara, lente, flash..." autocomplete="off">
@@ -68,18 +69,6 @@
   <p id="emptyState" class="empty-state" hidden>No encontramos productos que coincidan con tu búsqueda.</p>
 </main>
 
-<section class="about-us">
-  <div class="about-inner">
-    <img src="images/brand/quienes-somos.jpg" alt="Marcos y Jenny, fotógrafos de naturaleza" class="about-photo" loading="lazy">
-    <div class="about-text">
-      <h2>Quiénes somos</h2>
-      <p>Somos Marcos y Jenny —además de socios, pareja— fotógrafos de naturaleza y fanáticos de la fotografía en todas sus formas, incluidas las cámaras vintage que laten como nuevas.</p>
-      <p>Marcos es el que sabe todo: revisa, ajusta y deja cada cámara a punto con una paciencia y un amor que dan ganas de comprárselas todas. Eso sí, si le preguntás algo técnico te va a contestar con lujo de detalle — nivel manual de instrucciones en alemán — y ahí es cuando entra Jenny a traducirlo a español.</p>
-      <p>Jenny es la simpática del equipo: la que te recibe, te asesora y te explica todo fácil. Y sí, la que te contesta el WhatsApp a cualquier hora (ya sabés, somos humanos, no bots 😉).</p>
-    </div>
-  </div>
-</section>
-
 <footer class="site-footer">
   <p>Medios de pago: efectivo, transferencia bancaria, dólares y USDT (crypto). Vendemos por catálogo, sin showroom ni local a la calle: hacemos envíos a todo el país, y si querés ver y probar una cámara en persona, coordinamos día y horario por Cramer y Monroe, Belgrano (CABA).</p>
 </footer>
@@ -104,6 +93,22 @@
         <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2.003c-5.514 0-9.997 4.483-9.997 9.997 0 1.762.463 3.483 1.343 4.997L2 22l5.144-1.334a9.96 9.96 0 0 0 4.86 1.238h.004c5.514 0 9.997-4.483 9.997-9.997 0-2.67-1.04-5.18-2.928-7.068a9.935 9.935 0 0 0-7.073-2.936zm5.83 15.82a8.29 8.29 0 0 1-5.83 2.412h-.003a8.278 8.278 0 0 1-4.223-1.156l-.303-.18-3.053.792.815-2.976-.198-.306a8.264 8.264 0 0 1-1.267-4.409c0-4.569 3.72-8.287 8.293-8.287a8.24 8.24 0 0 1 5.863 2.43 8.227 8.227 0 0 1 2.427 5.86c0 4.57-3.72 8.288-8.293 8.288z"/></svg>
         Consultar por WhatsApp
       </a>
+    </div>
+  </div>
+</div>
+
+<!-- Quiénes somos -->
+<div class="modal-overlay" id="aboutOverlay" hidden>
+  <div class="about-modal" role="dialog" aria-modal="true" aria-labelledby="aboutModalTitle">
+    <button class="modal-close" id="aboutModalClose" aria-label="Cerrar">&times;</button>
+    <div class="about-inner">
+      <img src="images/brand/quienes-somos.jpg" alt="Marcos y Jenny, fotógrafos de naturaleza" class="about-photo" loading="lazy">
+      <div class="about-text">
+        <h2 id="aboutModalTitle">Quiénes somos</h2>
+        <p>Somos Marcos y Jenny —además de socios, pareja— fotógrafos de naturaleza y fanáticos de la fotografía en todas sus formas, incluidas las cámaras vintage que laten como nuevas.</p>
+        <p>Marcos es el que sabe todo: revisa, ajusta y deja cada cámara a punto con una paciencia y un amor que dan ganas de comprárselas todas. Eso sí, si le preguntás algo técnico te va a contestar con lujo de detalle — nivel manual de instrucciones en alemán — y ahí es cuando entra Jenny a traducirlo a español.</p>
+        <p>Jenny es la simpática del equipo: la que te recibe, te asesora y te explica todo fácil. Y sí, la que te contesta el WhatsApp a cualquier hora (ya sabés, somos humanos, no bots 😉).</p>
+      </div>
     </div>
   </div>
 </div>
