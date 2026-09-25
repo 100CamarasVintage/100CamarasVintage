@@ -1,12 +1,16 @@
 {
   "id": 273,
   "title": "Flash Vivitar Electronic Flash 1900 para camara de fotos",
-  "price": 50000,
-  "category": ["Flashes"],
+  "price": "$50.000",
+  "category": [
+    "Flashes"
+  ],
   "code": "240",
   "description": "Flash Vivitar Electronic Flash 1900\nEstado:\nFuncionando correctamente\nMuy buen estado general y compartimiento de pilas limpio\nDatos técnicos\nNúmero guía aproximado 20 (ISO 100)\nControl manual mediante tabla de exposición integrada\nCompatible con cámaras analógicas y digitales con zapata estándar\nBotón de prueba\nIndicador de carga Ready\nAlimentación mediante 2 pilas AA\nFabricado en Corea\nFlash compacto y liviano de uso universal, ideal para cámaras analógicas clásicas o digitales con zapata estándar. Muy simple de utilizar gracias a su tabla de exposición incorporada y su funcionamiento completamente manual\nDato de color:\nLos flashes Vivitar fueron reconocidos por ofrecer excelente relación entre potencia y confiabilidad, convirtiéndose en una de las marcas independientes más populares entre fotógrafos aficionados y profesionales durante las décadas de 1970 y 1980\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "/images/producto-273-01.jpg", "/images/producto-273-02.jpg", "/images/producto-273-03.jpg",
+    "/images/producto-273-01.jpg",
+    "/images/producto-273-02.jpg",
+    "/images/producto-273-03.jpg",
     "/images/producto-273-04.jpg"
   ],
   "thumb": "/images/producto-273-01.jpg"

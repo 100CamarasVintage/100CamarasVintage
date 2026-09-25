@@ -1,14 +1,21 @@
 {
   "id": 266,
   "title": "Cámara Pentona II + lente Meyer-Optik Görlitz Domiplan 45mm f/2.8",
-  "price": 115000,
-  "category": ["Cámaras analógicas"],
+  "price": "$115.000",
+  "category": [
+    "Cámaras analógicas"
+  ],
   "code": "228",
   "description": "Cámara Pentona II + lente Meyer-Optik Görlitz Domiplan 45mm f/2.8\nCámara analógica Pentona II de 35mm, fabricada en Alemania Oriental durante los años 60.\nSe entrega con estuche de cuero y tapa frontal impresa en 3D\nEstado general muy lindo. La óptica presenta marcas de limpieza visibles en el elemento frontal, propias de una cámara de esta edad, por eso se publica con esa aclaración y este precio\nTiene un lente Meyer-Optik Görlitz Domiplan 45mm f/2.8, una óptica alemana luminosa y con mucho carácter.\nEn la parte trasera mantiene una antigua etiqueta de ingreso/aduana argentina, un detalle de época muy interesante para colección.\nUn modelo muy particular dentro de las cámaras mecánicas europeas, con cuerpo metálico, diseño compacto y una estética clásica muy atractiva. Ideal para quienes buscan una cámara vintage diferente, coleccionable y con presencia.\nCuenta con obturador central Priomat, velocidades B, 1/30, 1/60 y 1/125, enfoque manual por escala, visor óptico directo, zapata para flash y conexión sincro PC. No usa pilas, por lo que su funcionamiento es completamente mecánico.\nDatos técnicos:\nMarca / modelo: Pentona II\nOrigen: Alemania Oriental / Dresden\nFormato: película 35mm\nTipo: cámara de visor directo, no réflex\nLente: Meyer-Optik Görlitz Domiplan 45mm f/2.8\nAperturas: f/2.8 a f/22\nObturador: Priomat central\nVelocidades: B, 1/30, 1/60 y 1/125\nEnfoque: manual por escala de distancia\nVisor: óptico directo, amplio para su época\nFlash: zapata superior y conexión sincro PC\nAvance: palanca superior\nRebobinado: manual\nAlimentación: no usa pilas\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "/images/producto-266-01.jpg", "/images/producto-266-02.jpg", "/images/producto-266-03.jpg",
-    "/images/producto-266-04.jpg", "/images/producto-266-05.jpg", "/images/producto-266-06.jpg",
-    "/images/producto-266-07.jpg", "/images/producto-266-08.jpg"
+    "/images/producto-266-01.jpg",
+    "/images/producto-266-02.jpg",
+    "/images/producto-266-03.jpg",
+    "/images/producto-266-04.jpg",
+    "/images/producto-266-05.jpg",
+    "/images/producto-266-06.jpg",
+    "/images/producto-266-07.jpg",
+    "/images/producto-266-08.jpg"
   ],
   "thumb": "/images/producto-266-01.jpg"
 }

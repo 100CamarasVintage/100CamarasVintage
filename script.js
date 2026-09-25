@@ -6,6 +6,7 @@ const itemCount = document.getElementById('itemCount');
 const emptyState = document.getElementById('emptyState');
 const categoryBar = document.getElementById('categoryBar');
 const categorySections = document.getElementById('categorySections');
+const pinnedRow = document.getElementById('pinnedRow');
 
 const modalOverlay = document.getElementById('modalOverlay');
 const modalImage = document.getElementById('modalImage');
@@ -23,6 +24,9 @@ const modalClose = document.getElementById('modalClose');
 let currentItem = null;
 let currentPhotoIndex = 0;
 let currentCategories = new Set(); // vacio = 'Todas'
+
+const CATALOG_ITEMS = ITEMS.filter(i => !i.pinned);
+const PINNED_ITEMS = ITEMS.filter(i => i.pinned);
 
 const CATEGORY_ORDER = [
   'Nuevos ingresos',
@@ -115,7 +119,7 @@ function renderPreviewRow(item) {
 function renderSections() {
   categorySections.innerHTML = '';
   CATEGORY_ORDER.forEach(cat => {
-    const items = ITEMS.filter(i => Array.isArray(i.category) && i.category.includes(cat));
+    const items = CATALOG_ITEMS.filter(i => Array.isArray(i.category) && i.category.includes(cat));
     if (items.length === 0) return;
 
     const section = document.createElement('div');
@@ -157,6 +161,27 @@ function renderSections() {
   });
 }
 
+function renderPinnedRow() {
+  if (!pinnedRow) return;
+  pinnedRow.innerHTML = '';
+  PINNED_ITEMS.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <span class="pin-flag">Fijado</span>
+      <div class="card-photo-wrap">
+        <img src="images/${item.thumb}" alt="${escapeHtml(item.title)}" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-title">${escapeHtml(item.title)}</div>
+        <div class="card-price">${escapeHtml(item.price)}</div>
+      </div>
+    `;
+    card.addEventListener('click', () => openModal(item));
+    pinnedRow.appendChild(card);
+  });
+}
+
 function renderGrid(items) {
   grid.innerHTML = '';
   items.forEach(item => {
@@ -184,9 +209,9 @@ function escapeHtml(str) {
 }
 
 function updateCount(n) {
-  itemCount.textContent = n === ITEMS.length
+  itemCount.textContent = n === CATALOG_ITEMS.length
     ? `${n} productos`
-    : `${n} de ${ITEMS.length} productos`;
+    : `${n} de ${CATALOG_ITEMS.length} productos`;
 }
 
 function applyFilter() {
@@ -198,14 +223,14 @@ function applyFilter() {
     grid.hidden = true;
     emptyState.hidden = true;
     renderSections();
-    updateCount(ITEMS.length);
+    updateCount(CATALOG_ITEMS.length);
     return;
   }
 
   categorySections.hidden = true;
   grid.hidden = false;
 
-  let filtered = ITEMS;
+  let filtered = CATALOG_ITEMS;
   if (currentCategories.size > 0) {
     filtered = filtered.filter(i => Array.isArray(i.category) && [...currentCategories].every(c => i.category.includes(c)));
   }
@@ -298,6 +323,7 @@ function openFromHash() {
 window.addEventListener('hashchange', openFromHash);
 
 // init
+renderPinnedRow();
 renderCategoryBar();
 applyFilter();
 openFromHash();

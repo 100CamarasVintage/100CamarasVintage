@@ -1,13 +1,20 @@
 {
   "id": 275,
   "title": "Flash Olympus Electronic Flash T18 compacto",
-  "price": 95000,
-  "category": ["Flashes", "Olympus"],
+  "price": "$95.000",
+  "category": [
+    "Flashes",
+    "Olympus"
+  ],
   "code": "242",
   "description": "Flash Olympus Electronic Flash T18\nEstado:\nFuncionando correctamente, compartimiento de pilas limpio y tapa de baterías presente\nDatos técnicos:\nNúmero guía 18 (ISO 100)\nFlash dedicado para cámaras Olympus OM compatibles\nModo TTL y manual según la cámara utilizada\nCobertura para lentes de 35 mm\nAlimentación mediante 2 pilas AA\nDiseño compacto y liviano\nFabricado en Japón\nFlash original Olympus de tamaño compacto, ideal para completar equipos de la serie OM. Ofrece excelente portabilidad, rápida recarga y funcionamiento dedicado con cámaras compatibles, siendo una excelente opción para fotografía analógica\nDato de color:\nEl T18 fue uno de los flashes más compactos del sistema Olympus OM y es muy buscado por quienes prefieren mantener el conjunto cámara y flash liviano sin perder compatibilidad TTL\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "/images/producto-275-01.jpg", "/images/producto-275-02.jpg", "/images/producto-275-03.jpg",
-    "/images/producto-275-04.jpg", "/images/producto-275-05.jpg", "/images/producto-275-06.jpg"
+    "/images/producto-275-01.jpg",
+    "/images/producto-275-02.jpg",
+    "/images/producto-275-03.jpg",
+    "/images/producto-275-04.jpg",
+    "/images/producto-275-05.jpg",
+    "/images/producto-275-06.jpg"
   ],
   "thumb": "/images/producto-275-01.jpg"
 }

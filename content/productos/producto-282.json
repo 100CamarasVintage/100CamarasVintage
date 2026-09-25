@@ -1,13 +1,20 @@
 {
   "id": 282,
   "title": "Cámara Digital Compacta Sanyo VPC-S1422S 14 MP 8x Zoom Óptico NUEVA",
-  "price": 325000,
-  "category": ["Cámaras digitales", "Cámaras nuevas en caja sin uso"],
+  "price": "$325.000",
+  "category": [
+    "Cámaras digitales",
+    "Cámaras nuevas en caja sin uso"
+  ],
   "code": "312",
   "description": "Sanyo VPC-S1422S Cámara Digital Compacta 14 MP 8x Zoom Óptico\nEstado en caja cerrada (aún conserva los plásticos)\nIncluye caja original, manual, cable USB, correa y pilas AA\nSensor de 14 megapíxeles\nZoom óptico 8x\nLente 4,5-36 mm f/2.9-5.9\nGrabación de video HD 720p\nPantalla LCD de 2,7 pulgadas\nDetección de sonrisas\nCompatible con tarjetas SD y SDHC\nAlimentación mediante 2 pilas AA fáciles de conseguir\nColor plateado\nIdeal para quienes buscan una cámara compacta confiable sin depender de baterías propietarias y con kit completo, un conjunto cada vez más difícil de encontrar en este estado\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "/images/producto-282-01.jpg", "/images/producto-282-02.jpg", "/images/producto-282-03.jpg",
-    "/images/producto-282-04.jpg", "/images/producto-282-05.jpg", "/images/producto-282-06.jpg"
+    "/images/producto-282-01.jpg",
+    "/images/producto-282-02.jpg",
+    "/images/producto-282-03.jpg",
+    "/images/producto-282-04.jpg",
+    "/images/producto-282-05.jpg",
+    "/images/producto-282-06.jpg"
   ],
   "thumb": "/images/producto-282-01.jpg"
 }
