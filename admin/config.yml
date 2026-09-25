@@ -3,8 +3,6 @@ backend:
   repo: 100CamarasVintage/100CamarasVintage
   branch: main
 
-publish_mode: editorial_workflow
-
 media_folder: "images"
 public_folder: "/images"
 
