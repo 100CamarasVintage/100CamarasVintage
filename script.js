@@ -210,7 +210,12 @@ function applyFilter() {
     filtered = filtered.filter(i => Array.isArray(i.category) && [...currentCategories].every(c => i.category.includes(c)));
   }
   if (q) {
-    filtered = filtered.filter(i => i.title.toLowerCase().includes(q) || i.description.toLowerCase().includes(q));
+    if (q.startsWith('#')) {
+      const codeQuery = q.slice(1).trim();
+      filtered = filtered.filter(i => i.code && i.code.toLowerCase().includes(codeQuery));
+    } else {
+      filtered = filtered.filter(i => i.title.toLowerCase().includes(q) || i.description.toLowerCase().includes(q));
+    }
   }
   renderGrid(filtered);
   updateCount(filtered.length);
