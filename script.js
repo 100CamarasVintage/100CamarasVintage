@@ -7,6 +7,7 @@ const emptyState = document.getElementById('emptyState');
 const categoryBar = document.getElementById('categoryBar');
 const categorySections = document.getElementById('categorySections');
 const pinnedRow = document.getElementById('pinnedRow');
+const sortSelect = document.getElementById('sortSelect');
 
 const modalOverlay = document.getElementById('modalOverlay');
 const modalImage = document.getElementById('modalImage');
@@ -31,6 +32,7 @@ const buyModalClose = document.getElementById('buyModalClose');
 let currentItem = null;
 let currentPhotoIndex = 0;
 let currentCategories = new Set(); // vacio = 'Todas'
+let currentSort = 'default';
 
 const CATALOG_ITEMS = ITEMS.filter(i => !i.pinned);
 const PINNED_ITEMS = ITEMS.filter(i => i.pinned);
@@ -221,9 +223,48 @@ function updateCount(n) {
     : `${n} de ${CATALOG_ITEMS.length} productos`;
 }
 
+function parsePriceValue(priceStr) {
+  if (!priceStr) return null;
+  if (/U\$S|USD|US\$/i.test(priceStr)) return null; // precio en otra moneda, no comparable
+  const digits = priceStr.replace(/[^\d]/g, '');
+  if (!digits) return null;
+  return parseInt(digits, 10);
+}
+
+function sortItems(items) {
+  const arr = items.slice();
+  function byPrice(dir) {
+    return (a, b) => {
+      const pa = parsePriceValue(a.price);
+      const pb = parsePriceValue(b.price);
+      if (pa === null && pb === null) return 0;
+      if (pa === null) return 1;
+      if (pb === null) return -1;
+      return dir * (pa - pb);
+    };
+  }
+  switch (currentSort) {
+    case 'price-asc':
+      arr.sort(byPrice(1));
+      break;
+    case 'price-desc':
+      arr.sort(byPrice(-1));
+      break;
+    case 'newest':
+      arr.sort((a, b) => (b.id || 0) - (a.id || 0));
+      break;
+    case 'oldest':
+      arr.sort((a, b) => (a.id || 0) - (b.id || 0));
+      break;
+    default:
+      break;
+  }
+  return arr;
+}
+
 function applyFilter() {
   const q = searchInput.value.trim().toLowerCase();
-  const showSections = currentCategories.size === 0 && !q;
+  const showSections = currentCategories.size === 0 && !q && currentSort === 'default';
 
   if (showSections) {
     categorySections.hidden = false;
@@ -249,11 +290,16 @@ function applyFilter() {
       filtered = filtered.filter(i => i.title.toLowerCase().includes(q) || i.description.toLowerCase().includes(q));
     }
   }
+  filtered = sortItems(filtered);
   renderGrid(filtered);
   updateCount(filtered.length);
 }
 
 searchInput.addEventListener('input', applyFilter);
+sortSelect.addEventListener('change', () => {
+  currentSort = sortSelect.value;
+  applyFilter();
+});
 
 function openModal(item) {
   currentItem = item;

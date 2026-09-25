@@ -331,6 +331,53 @@ a { color: inherit; }
   padding: 60px 20px;
 }
 
+/* ---------- Sort bar ---------- */
+
+.sort-bar {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4px 20px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.sort-bar label {
+  font-family: 'Archivo', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.sort-bar select {
+  font-family: 'Archivo', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--white);
+  border: 2px solid var(--forest);
+  border-radius: 999px;
+  padding: 8px 34px 8px 16px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%232e4a3b' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.sort-bar select:focus {
+  outline: none;
+  border-color: var(--terracotta);
+}
+
+@media (max-width: 640px) {
+  .sort-bar { justify-content: space-between; padding: 4px 20px 12px; }
+  .sort-bar select { flex: 1 1 auto; }
+}
+
 /* ---------- Category sections (home overview) ---------- */
 
 .category-sections {
