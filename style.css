@@ -119,9 +119,13 @@ a { color: inherit; }
 }
 
 .item-count {
-  font-size: 13px;
-  color: var(--ink-soft);
-  white-space: nowrap;
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .header-tools { flex-wrap: wrap; }
+  .search-wrap { flex: 1 1 100%; max-width: 100%; order: 2; }
+  .about-btn { order: 1; }
 }
 
 .about-btn {
@@ -278,6 +282,10 @@ a { color: inherit; }
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.pinned-row .card-photo-wrap img {
+  object-position: center top;
 }
 
 .card-body {
