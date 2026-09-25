@@ -139,6 +139,29 @@ a { color: inherit; }
   line-height: 1.6;
 }
 
+/* ---------- Info strip (envíos / retiro / pago) ---------- */
+
+.info-strip {
+  max-width: 900px;
+  margin: 0 auto 24px;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.info-item {
+  background: var(--white);
+  border: 2px solid var(--forest);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--forest);
+  white-space: nowrap;
+}
+
 /* ---------- Pinned row (Gift Cards) ---------- */
 
 .pinned-row {
@@ -361,6 +384,63 @@ a { color: inherit; }
   margin-top: 2px;
 }
 
+/* ---------- About us ---------- */
+
+.about-us {
+  max-width: 980px;
+  margin: 44px auto 0;
+  padding: 0 20px;
+}
+
+.about-inner {
+  display: flex;
+  align-items: stretch;
+  background: var(--white);
+  border: 1px solid rgba(43, 36, 32, 0.08);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.about-photo {
+  width: 300px;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+}
+
+.about-text {
+  padding: 30px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-text h2 {
+  font-family: 'Bevan', serif;
+  color: var(--forest);
+  font-size: 22px;
+  margin: 0 0 14px;
+}
+
+.about-text p {
+  color: var(--ink-soft);
+  font-size: 14.5px;
+  line-height: 1.65;
+  margin: 0 0 12px;
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 720px) {
+  .about-inner { flex-direction: column; }
+  .about-photo { width: 100%; height: 260px; }
+  .about-text { padding: 22px 20px; }
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer {
@@ -375,6 +455,10 @@ a { color: inherit; }
   margin: 0 auto;
   color: var(--ink-soft);
   font-size: 13px;
+}
+
+.site-footer p + p {
+  margin-top: 8px;
 }
 
 /* ---------- Modal ---------- */
