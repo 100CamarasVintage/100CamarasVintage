@@ -35,19 +35,39 @@ function main() {
     return item;
   });
 
-  // Ordenar: primero los que tienen "orden" manual asignado (de menor a mayor),
-  // y despues el resto, mas nuevos primero (por id descendente).
+  // Ordenar segun content/orden.json (lista arrastrable del panel de admin).
+  // Los productos que estan en esa lista se muestran en el orden en que fueron
+  // acomodados ahi. Los que NO estan en la lista (por ejemplo, recien creados
+  // y todavia no ubicados a mano) aparecen primero, mas nuevos arriba.
+  const ORDEN_FILE = path.join(__dirname, 'content', 'orden.json');
+  let ordenPosicion = new Map();
+  if (fs.existsSync(ORDEN_FILE)) {
+    try {
+      const ordenRaw = fs.readFileSync(ORDEN_FILE, 'utf-8');
+      const ordenData = JSON.parse(ordenRaw);
+      const lista = Array.isArray(ordenData.items) ? ordenData.items : [];
+      lista.forEach((entry, idx) => {
+        const pid = Number(entry.producto);
+        if (!isNaN(pid) && !ordenPosicion.has(pid)) {
+          ordenPosicion.set(pid, idx);
+        }
+      });
+    } catch (e) {
+      console.error('No se pudo leer content/orden.json, se usa orden por fecha.', e);
+    }
+  }
+
   function ordenKey(item) {
-    const n = Number(item.orden);
-    return (item.orden !== undefined && item.orden !== null && item.orden !== '' && !isNaN(n))
-      ? n
-      : Infinity;
+    if (ordenPosicion.has(item.id)) {
+      return [1, ordenPosicion.get(item.id)];
+    }
+    return [0, -(item.id || 0)];
   }
   items.sort((a, b) => {
     const ka = ordenKey(a);
     const kb = ordenKey(b);
-    if (ka !== kb) return ka - kb;
-    return (b.id || 0) - (a.id || 0);
+    if (ka[0] !== kb[0]) return ka[0] - kb[0];
+    return ka[1] - kb[1];
   });
 
   const json = JSON.stringify(items, null, 0);
