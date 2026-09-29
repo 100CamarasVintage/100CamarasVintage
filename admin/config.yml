@@ -25,7 +25,7 @@ collections:
         field: "id"
         direction: "descending"
     fields:
-      - { label: "ID (no tocar, se genera solo)", name: "id", widget: "number", required: true }
+      - { label: "ID (se completa solo al guardar, no hace falta escribir nada)", name: "id", widget: "number", required: false }
       - { label: "Título", name: "title", widget: "string", required: true }
       - { label: "Precio (ej: $120.000 o Consultar)", name: "price", widget: "string", required: true }
       - label: "Categorías (podés tildar varias)"

@@ -19,5 +19,30 @@
     }
   </script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // El campo ID de cada producto tiene que ser unico, pero no queremos
+    // que haya que inventarlo a mano al publicar. Antes de guardar una
+    // publicacion nueva (que todavia no tiene ID), le asignamos uno
+    // automaticamente. Si ya tiene ID (una publicacion que se esta
+    // editando), no lo tocamos.
+    if (window.CMS && typeof window.CMS.registerEventListener === "function") {
+      window.CMS.registerEventListener({
+        name: "preSave",
+        handler: ({ entry }) => {
+          try {
+            const data = entry.get("data");
+            const currentId = data.get("id");
+            if (!currentId) {
+              return data.set("id", Date.now());
+            }
+            return data;
+          } catch (e) {
+            console.error("No se pudo autogenerar el ID, se guarda igual.", e);
+            return entry.get("data");
+          }
+        },
+      });
+    }
+  </script>
 </body>
 </html>
