@@ -32,6 +32,7 @@ collections:
         options:
           - "Nuevos ingresos"
           - "Cámaras analógicas"
+          - "Telemétrica"
           - "Cámaras point and shoot"
           - "Cámaras digitales"
           - "Cámaras nuevas en caja sin uso"
