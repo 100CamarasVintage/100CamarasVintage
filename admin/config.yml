@@ -81,4 +81,4 @@ collections:
               collection: "productos"
               search_fields: ["title", "code", "id"]
               value_field: "id"
-              display_fields: ["{{title}} - {{code}}"]
+              display_fields: ["{{title}} — {{category}} — {{price}}"]
