@@ -763,9 +763,6 @@
       "producto": 27
     },
     {
-      "producto": 211
-    },
-    {
       "producto": 212
     },
     {
@@ -905,6 +902,9 @@
     },
     {
       "producto": 306
+    },
+    {
+      "producto": 107
     }
   ]
 }
