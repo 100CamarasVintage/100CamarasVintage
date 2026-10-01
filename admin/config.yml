@@ -19,11 +19,7 @@ collections:
     slug: "producto-{{fields.id}}"
     identifier_field: title
     summary: "{{title}} — {{price}} ({{category}})"
-    sortable_fields:
-      fields: ["title", "price", "id"]
-      default:
-        field: "id"
-        direction: "descending"
+    sortable_fields: ["title", "price", "id"]
     fields:
       - { label: "ID (se completa solo al guardar, no hace falta escribir nada)", name: "id", widget: "number", required: false }
       - { label: "Título", name: "title", widget: "string", required: true }
