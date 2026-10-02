@@ -22,6 +22,7 @@ collections:
     sortable_fields: ["title", "price", "id"]
     fields:
       - { label: "ID (se completa solo al guardar, no hace falta escribir nada)", name: "id", widget: "number", required: false }
+      - { label: "Oculta / Pausada (no se muestra en la página pero NO se borra. Destildá para que vuelva a aparecer tal cual estaba)", name: "hidden", widget: "boolean", required: false, default: false }
       - { label: "Título", name: "title", widget: "string", required: true }
       - { label: "Precio (ej: $120.000 o Consultar)", name: "price", widget: "string", required: true }
       - label: "Categorías (podés tildar varias)"

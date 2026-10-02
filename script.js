@@ -283,7 +283,12 @@ function applyFilter() {
     filtered = filtered.filter(i => Array.isArray(i.category) && [...currentCategories].every(c => i.category.includes(c)));
   }
   if (q) {
-    if (q.startsWith('#')) {
+    const isNumericCode = /^\d+$/.test(q);
+    if (isNumericCode) {
+      // Si escribe solo numeros, se asume que es el codigo propio de la camara
+      // y se busca una coincidencia EXACTA (no parcial) para evitar resultados confusos.
+      filtered = filtered.filter(i => i.code && i.code.trim() === q);
+    } else if (q.startsWith('#')) {
       const codeQuery = q.slice(1).trim();
       filtered = filtered.filter(i => i.code && i.code.toLowerCase().includes(codeQuery));
     } else {

@@ -25,7 +25,7 @@ function main() {
     return p.replace(/^\/?images\//, '');
   }
 
-  const items = files.map(file => {
+  const allItems = files.map(file => {
     const raw = fs.readFileSync(path.join(CONTENT_DIR, file), 'utf-8');
     const item = JSON.parse(raw);
     item.photos = (item.photos || []).map(cleanPath).filter(Boolean);
@@ -34,6 +34,13 @@ function main() {
     item.category = Array.isArray(item.category) ? item.category : (item.category ? [item.category] : []);
     return item;
   });
+
+  // Las productos marcados como "Oculta" en el panel no se publican en el
+  // catalogo (quedan afuera de data.js) pero su archivo JSON sigue guardado
+  // en content/productos, con todas sus fotos y datos, por si hay que
+  // reactivarlos despues (por ejemplo si vuelve a entrar stock).
+  const items = allItems.filter(item => !item.hidden);
+  const ocultos = allItems.length - items.length;
 
   // Ordenar segun content/orden.json (lista arrastrable del panel de admin).
   // Los productos que estan en esa lista se muestran en el orden en que fueron
@@ -74,7 +81,7 @@ function main() {
   const output = `const ITEMS = ${json};\n`;
 
   fs.writeFileSync(OUTPUT_FILE, output, 'utf-8');
-  console.log(`data.js generado con ${items.length} productos.`);
+  console.log(`data.js generado con ${items.length} productos (${ocultos} ocultos no publicados).`);
 }
 
 main();
