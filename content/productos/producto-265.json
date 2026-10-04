@@ -17,5 +17,6 @@
     "/images/producto-265-06.jpg",
     "/images/producto-265-07.jpg"
   ],
-  "thumb": "/images/producto-265-01.jpg"
+  "thumb": "/images/producto-265-01.jpg",
+  "hidden": true
 }

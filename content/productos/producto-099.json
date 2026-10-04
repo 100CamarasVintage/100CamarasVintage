@@ -16,5 +16,6 @@
     "images/IMG-20260812-WA0001.jpg"
   ],
   "thumb": "images/IMG-20260812-WA0002.jpg",
-  "orden": 170
+  "orden": 170,
+  "hidden": true
 }
