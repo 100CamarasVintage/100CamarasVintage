@@ -1,14 +1,4 @@
 {
-  "id": 312,
-  "title": "Olympus C-610 Compacta 14 MP Zoom Óptico 5x",
-  "price": "$180.000",
-  "category": [
-    "Nuevos ingresos",
-    "Cámaras digitales",
-    "Olympus"
-  ],
-  "code": "470",
-  "description": "Olympus C-610 Cámara Digital Compacta 14 MP Zoom Óptico 5x\n\nEstado: Excelente estado general, funcionando correctamente\nCámara digital compacta de 14 megapíxeles\nZoom óptico 5x\nObjetivo Olympus Lens 5,05–25,25 mm f/3.3–5.6\nEquivalente aproximado a 28–140 mm\nPantalla LCD de 2,7 pulgadas\nAutofoco\nFlash incorporado\nEstabilización digital de imagen\nDetección de sonrisa y parpadeo\nGrabación de video\nUtiliza tarjetas SD/SDHC\nIncluye batería recargable Olympus LI-42B\nIncluye tarjeta SD Lexar de 1 GB\nIncluye correa de muñeca\nIncluye caja original\nNo incluye cargador (se puede usar con un cargador universal)\n\nModelo poco habitual de encontrar, ensamblada en Tierra del Fuego, Argentina, detalle especialmente interesante para coleccionistas de cámaras digitales de la época\nCompacta, liviana y con zoom 5x, ideal para quienes buscan la estética característica de las digicam de principios de la década de 2010 sin depender de un teléfono celular\n\nEstamos en Cramer y Monroe BELGRANO CABA, donde podes pasar a retirar y probar las camaras\nTambién hacemos envios",
   "photos": [
     "img-20260925-wa0206.jpg",
     "/images/img-20260925-wa0207.jpg",
@@ -17,5 +7,16 @@
     "/images/img-20260926-wa0051.jpg",
     "img-20260926-wa0054.jpg"
   ],
-  "thumb": "img-20260925-wa0206.jpg"
+  "price": "$180.000",
+  "hidden": true,
+  "code": "470",
+  "thumb": "img-20260925-wa0206.jpg",
+  "title": "Olympus C-610 Compacta 14 MP Zoom Óptico 5x",
+  "id": 312,
+  "description": "Olympus C-610 Cámara Digital Compacta 14 MP Zoom Óptico 5x\n\nEstado: Excelente estado general, funcionando correctamente\nCámara digital compacta de 14 megapíxeles\nZoom óptico 5x\nObjetivo Olympus Lens 5,05–25,25 mm f/3.3–5.6\nEquivalente aproximado a 28–140 mm\nPantalla LCD de 2,7 pulgadas\nAutofoco\nFlash incorporado\nEstabilización digital de imagen\nDetección de sonrisa y parpadeo\nGrabación de video\nUtiliza tarjetas SD/SDHC\nIncluye batería recargable Olympus LI-42B\nIncluye tarjeta SD Lexar de 1 GB\nIncluye correa de muñeca\nIncluye caja original\nNo incluye cargador (se puede usar con un cargador universal)\n\nModelo poco habitual de encontrar, ensamblada en Tierra del Fuego, Argentina, detalle especialmente interesante para coleccionistas de cámaras digitales de la época\nCompacta, liviana y con zoom 5x, ideal para quienes buscan la estética característica de las digicam de principios de la década de 2010 sin depender de un teléfono celular\n\nEstamos en Cramer y Monroe BELGRANO CABA, donde podes pasar a retirar y probar las camaras\nTambién hacemos envios",
+  "category": [
+    "Nuevos ingresos",
+    "Cámaras digitales",
+    "Olympus"
+  ]
 }
