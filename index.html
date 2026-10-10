@@ -52,6 +52,7 @@
     <div class="header-tools">
       <button type="button" id="aboutBtn" class="about-btn">Quiénes somos</button>
       <button type="button" id="buyBtn" class="about-btn buy-btn">Compramos cámaras</button>
+      <button type="button" id="infoBtn" class="about-btn info-btn" aria-haspopup="dialog" aria-label="Información"><span class="lbl-full">Información</span><span class="lbl-short">ℹ️ Info</span></button>
       <div class="search-wrap">
         <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input type="text" id="searchInput" placeholder="Buscar cámara, lente, flash..." autocomplete="off">
@@ -65,13 +66,6 @@
 <main id="top">
   <section class="intro">
     <p>Cámaras, lentes y accesorios vintage, también equipos modernos y digitales.</p>
-  </section>
-
-  <section class="info-strip">
-    <div class="info-item">🚚 Hacemos envíos a todo el país</div>
-    <div class="info-item">📍 Venta por catálogo, sin showroom — coordinamos para que veas y pruebes tu cámara</div>
-    <div class="info-item">💳 Efectivo, transferencia, USD y USDT</div>
-    <div class="info-item">💬 Atendido por humanos las 24hs (cero bots, cero IA 🤖🚫)</div>
   </section>
 
   <section class="pinned-row" id="pinnedRow"></section>
@@ -153,6 +147,28 @@
         <li>Mandanos fotos de lo que querés vender y una explicación del estado en el que se encuentra. Cuanto más sepamos, más fácil es pasarte una tasación real del producto.</li>
       </ul>
       <p class="buy-cta">Escribinos por WhatsApp o Instagram <strong>@100camarasvintage</strong> contándonos qué tenés para vender.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Información (envíos / retiro / pagos / atención) -->
+<div class="modal-overlay" id="infoOverlay" hidden>
+  <div class="info-modal" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">
+    <button class="modal-close" id="infoModalClose" aria-label="Cerrar">&times;</button>
+    <div class="info-modal-body">
+      <h2 id="infoModalTitle">Información</h2>
+      <p class="info-hint">Tocá un ícono para ver los detalles</p>
+      <div class="info-icons" role="tablist">
+        <button type="button" class="info-icon" data-info="envios" aria-expanded="false" aria-label="Envíos"><span aria-hidden="true">🚚</span><small>Envíos</small></button>
+        <button type="button" class="info-icon" data-info="retiro" aria-expanded="false" aria-label="Retiro y venta"><span aria-hidden="true">📍</span><small>Retiro</small></button>
+        <button type="button" class="info-icon" data-info="pagos" aria-expanded="false" aria-label="Medios de pago"><span aria-hidden="true">💳</span><small>Pagos</small></button>
+        <button type="button" class="info-icon" data-info="atencion" aria-expanded="false" aria-label="Atención"><span aria-hidden="true">💬</span><small>Atención</small></button>
+      </div>
+      <div class="info-panel" id="infoPanel" hidden></div>
+      <template id="info-envios"><strong>🚚 Envíos</strong><p>Hacemos envíos a todo el país.</p></template>
+      <template id="info-retiro"><strong>📍 Retiro y venta</strong><p>Venta por catálogo, sin showroom — coordinamos para que veas y pruebes tu cámara.</p></template>
+      <template id="info-pagos"><strong>💳 Medios de pago</strong><p>Efectivo, transferencia, USD y USDT.</p></template>
+      <template id="info-atencion"><strong>💬 Atención</strong><p>Atendido por humanos las 24hs (cero bots, cero IA 🤖🚫).</p></template>
     </div>
   </div>
 </div>

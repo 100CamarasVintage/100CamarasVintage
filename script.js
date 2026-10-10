@@ -28,6 +28,10 @@ const aboutModalClose = document.getElementById('aboutModalClose');
 const buyBtn = document.getElementById('buyBtn');
 const buyOverlay = document.getElementById('buyOverlay');
 const buyModalClose = document.getElementById('buyModalClose');
+const infoBtn = document.getElementById('infoBtn');
+const infoOverlay = document.getElementById('infoOverlay');
+const infoModalClose = document.getElementById('infoModalClose');
+const infoPanel = document.getElementById('infoPanel');
 
 let currentItem = null;
 let currentPhotoIndex = 0;
@@ -408,6 +412,44 @@ buyOverlay.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (buyOverlay.hidden) return;
   if (e.key === 'Escape') closeBuy();
+});
+
+function closeInfoPanel() {
+  infoPanel.hidden = true;
+  infoPanel.innerHTML = '';
+  infoOverlay.querySelectorAll('.info-icon').forEach(b => b.setAttribute('aria-expanded', 'false'));
+}
+
+function openInfo() {
+  closeInfoPanel();
+  infoOverlay.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeInfo() {
+  infoOverlay.hidden = true;
+  document.body.style.overflow = '';
+  closeInfoPanel();
+}
+
+infoBtn.addEventListener('click', openInfo);
+infoModalClose.addEventListener('click', closeInfo);
+infoOverlay.addEventListener('click', (e) => {
+  if (e.target === infoOverlay) closeInfo();
+});
+infoOverlay.querySelectorAll('.info-icon').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const wasOpen = btn.getAttribute('aria-expanded') === 'true';
+    closeInfoPanel();
+    if (wasOpen) return;
+    btn.setAttribute('aria-expanded', 'true');
+    infoPanel.appendChild(document.getElementById('info-' + btn.dataset.info).content.cloneNode(true));
+    infoPanel.hidden = false;
+  });
+});
+document.addEventListener('keydown', (e) => {
+  if (infoOverlay.hidden) return;
+  if (e.key === 'Escape') closeInfo();
 });
 
 function openFromHash() {
