@@ -382,7 +382,7 @@ a { color: inherit; }
 
 .sort-bar {
   max-width: 900px;
-  margin: 0 auto;
+  margin: 14px auto 0;
   padding: 4px 20px 14px;
   display: flex;
   align-items: center;
@@ -846,6 +846,12 @@ a { color: inherit; }
 }
 
 .category-bar::-webkit-scrollbar { display: none; }
+
+/* Dos hileras: estilo de cámara arriba, marcas abajo */
+.category-bar:not(.brand-bar) { padding-bottom: 8px; }
+.category-bar.brand-bar { padding-bottom: 12px; }
+.brand-bar .category-pill { border-color: var(--terracotta, #a0634a); color: var(--terracotta, #a0634a); }
+.brand-bar .category-pill.active { background: var(--terracotta, #a0634a); color: var(--white); }
 
 .category-pill {
   flex: 0 0 auto;

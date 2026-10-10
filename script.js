@@ -5,6 +5,7 @@ const searchInput = document.getElementById('searchInput');
 const itemCount = document.getElementById('itemCount');
 const emptyState = document.getElementById('emptyState');
 const categoryBar = document.getElementById('categoryBar');
+const brandBar = document.getElementById('brandBar');
 const categorySections = document.getElementById('categorySections');
 const sortSelect = document.getElementById('sortSelect');
 
@@ -41,7 +42,8 @@ let currentSort = 'default';
 
 const CATALOG_ITEMS = ITEMS.filter(i => !i.pinned);
 
-const CATEGORY_ORDER = [
+// Primera hilera: estilo / tipo de cámara
+const STYLE_ORDER = [
   'Nuevos ingresos',
   'Cámaras analógicas',
   'Cámaras point and shoot',
@@ -55,7 +57,11 @@ const CATEGORY_ORDER = [
   'Cámaras de fuelle',
   'Filmadoras a cuerda',
   'Otros',
-  'Para deco o restauración',
+  'Para deco o restauración'
+];
+
+// Segunda hilera: marcas
+const BRAND_ORDER = [
   'Nikon',
   'Canon',
   'Pentax',
@@ -67,6 +73,8 @@ const CATEGORY_ORDER = [
   'Kodak',
   'Sony'
 ];
+
+const CATEGORY_ORDER = [...STYLE_ORDER, ...BRAND_ORDER];
 
 const CATEGORY_ICONS = {
   'Nuevos ingresos': 'images/brand/icon-nuevoingresos.png',
@@ -86,8 +94,12 @@ const CATEGORY_ICONS = {
 };
 
 function renderCategoryBar() {
-  const categories = ['Todas', ...CATEGORY_ORDER];
-  categoryBar.innerHTML = '';
+  fillBar(categoryBar, ['Todas', ...STYLE_ORDER]);
+  fillBar(brandBar, BRAND_ORDER);
+}
+
+function fillBar(bar, categories) {
+  bar.innerHTML = '';
   categories.forEach(cat => {
     const isActive = cat === 'Todas' ? currentCategories.size === 0 : currentCategories.has(cat);
     const btn = document.createElement('button');
@@ -111,7 +123,7 @@ function renderCategoryBar() {
       renderCategoryBar();
       applyFilter();
     });
-    categoryBar.appendChild(btn);
+    bar.appendChild(btn);
   });
 }
 
