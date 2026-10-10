@@ -6,7 +6,6 @@ const itemCount = document.getElementById('itemCount');
 const emptyState = document.getElementById('emptyState');
 const categoryBar = document.getElementById('categoryBar');
 const categorySections = document.getElementById('categorySections');
-const pinnedRow = document.getElementById('pinnedRow');
 const sortSelect = document.getElementById('sortSelect');
 
 const modalOverlay = document.getElementById('modalOverlay');
@@ -28,6 +27,8 @@ const aboutModalClose = document.getElementById('aboutModalClose');
 const buyBtn = document.getElementById('buyBtn');
 const buyOverlay = document.getElementById('buyOverlay');
 const buyModalClose = document.getElementById('buyModalClose');
+const giftBtn = document.getElementById('giftBtn');
+const GIFT_CARD_ID = 306;
 const infoBtn = document.getElementById('infoBtn');
 const infoOverlay = document.getElementById('infoOverlay');
 const infoModalClose = document.getElementById('infoModalClose');
@@ -39,7 +40,6 @@ let currentCategories = new Set(); // vacio = 'Todas'
 let currentSort = 'default';
 
 const CATALOG_ITEMS = ITEMS.filter(i => !i.pinned);
-const PINNED_ITEMS = ITEMS.filter(i => i.pinned);
 
 const CATEGORY_ORDER = [
   'Nuevos ingresos',
@@ -171,27 +171,6 @@ function renderSections() {
     section.appendChild(list);
 
     categorySections.appendChild(section);
-  });
-}
-
-function renderPinnedRow() {
-  if (!pinnedRow) return;
-  pinnedRow.innerHTML = '';
-  PINNED_ITEMS.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <span class="pin-flag">Fijado</span>
-      <div class="card-photo-wrap">
-        <img src="images/${item.thumb}" alt="${escapeHtml(item.title)}" loading="lazy">
-      </div>
-      <div class="card-body">
-        <div class="card-title">${escapeHtml(item.title)}</div>
-        <div class="card-price">${escapeHtml(item.price)}</div>
-      </div>
-    `;
-    card.addEventListener('click', () => openModal(item));
-    pinnedRow.appendChild(card);
   });
 }
 
@@ -452,6 +431,11 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeInfo();
 });
 
+giftBtn.addEventListener('click', () => {
+  const item = ITEMS.find(i => i.id === GIFT_CARD_ID);
+  if (item) openModal(item);
+});
+
 function openFromHash() {
   const m = location.hash.match(/^#producto-(\d+)$/);
   if (!m) return;
@@ -463,7 +447,6 @@ function openFromHash() {
 window.addEventListener('hashchange', openFromHash);
 
 // init
-renderPinnedRow();
 renderCategoryBar();
 applyFilter();
 openFromHash();
