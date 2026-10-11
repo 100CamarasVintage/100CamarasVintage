@@ -2,6 +2,7 @@
   "id": 28,
   "title": "Canon AV-1 Silver + Canon FD 50mm f/1.8",
   "price": "$400.000",
+  "hidden": true,
   "category": [
     "Cámaras analógicas",
     "Canon"
