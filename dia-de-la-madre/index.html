@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Día de la Madre — 100 Cámaras Vintage</title>
-<meta name="description" content="Regalale una cámara con historia a mamá: compactas y digitales fáciles de usar, probadas y listas para sacar fotos. También Gift Card. Envíos a todo el país.">
+<meta name="description" content="Regalale a mamá una cámara nueva, en caja o sin caja, o una Gift Card para que ella elija. Envíos a todo el país.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="100 Cámaras Vintage">
 <meta property="og:title" content="Día de la Madre — Regalale una cámara con historia">
-<meta property="og:description" content="Cámaras fáciles de usar, probadas y listas para sacar fotos, o una Gift Card para que ella elija. Envíos a todo el país.">
+<meta property="og:description" content="Cámaras y accesorios nuevos para regalar, o una Gift Card para que ella elija. Envíos a todo el país.">
 <meta property="og:image" content="https://www.100camarasvintage.com/images/producto-306-02.jpg">
 <meta property="og:url" content="https://www.100camarasvintage.com/dia-de-la-madre/">
 <link rel="icon" type="image/png" sizes="32x32" href="/images/brand/favicon-32.png">
@@ -44,6 +44,7 @@ h2{font-family:'Bevan',serif;font-weight:400;font-size:clamp(24px,4vw,34px);colo
 .card img{width:100%;height:100%;object-fit:cover;display:block}
 .card .body{padding:12px 14px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
 .card h3{font-size:15px;line-height:1.3;margin:0;font-weight:600}
+.card .tag{align-self:flex-start;background:var(--cream);color:var(--forest);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:3px}
 .card .price{font-family:'Bevan',serif;color:var(--terracotta-dark);font-size:20px}
 .card .wa{margin-top:auto;text-align:center;background:var(--forest);color:var(--white);text-decoration:none;font-weight:600;font-size:14px;padding:9px 10px;border-radius:4px}
 .card .wa:hover{background:var(--forest-dark)}
@@ -58,7 +59,8 @@ h2{font-family:'Bevan',serif;font-weight:400;font-size:clamp(24px,4vw,34px);colo
 .how b{font-family:'Bevan',serif;font-weight:400;color:var(--terracotta-dark);font-size:18px;display:block;margin-bottom:4px}
 .more{text-align:center;margin-top:28px}
 footer{text-align:center;color:var(--ink-soft);font-size:14px;padding:26px 20px 40px}
-@media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr);gap:12px}.card h3{font-size:13px}.card .price{font-size:17px}.card .wa{font-size:12.5px}.gift-inner{grid-template-columns:1fr}.hero{padding:36px 18px 40px}.hero p{font-size:16px}}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr);gap:12px}.card h3{font-size:13px}.card .tag{align-self:flex-start;background:var(--cream);color:var(--forest);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:3px}
+.card .price{font-size:17px}.card .wa{font-size:12.5px}.gift-inner{grid-template-columns:1fr}.hero{padding:36px 18px 40px}.hero p{font-size:16px}}
 </style>
 </head>
 <body>
@@ -70,13 +72,13 @@ footer{text-align:center;color:var(--ink-soft);font-size:14px;padding:26px 20px 
 <section class="hero">
   <small>Domingo 18 de octubre · Día de la Madre</small>
   <h1>Regalale una cámara con historia</h1>
-  <p>Para la mamá que guarda recuerdos, fotos y momentos. Cámaras probadas, listas para sacar fotos, con atención personalizada.</p>
+  <p>Para la mamá que guarda recuerdos, fotos y momentos. Elegí entre cámaras y accesorios nuevos, listos para regalar, con atención personalizada.</p>
   <a class="btn" href="#camaras">Ver cámaras para regalar</a>
 </section>
 
 <section class="wrap" id="camaras">
-  <h2>Cámaras fáciles de usar</h2>
-  <p class="lead">Una selección de compactas y digitales para empezar sin complicaciones: apuntás, sacás y listo.</p>
+  <h2>Cámaras nuevas para regalar</h2>
+  <p class="lead">Todas nuevas, sin uso: algunas en su caja original y otras sin caja. Compactas fáciles de usar, para sacar fotos sin complicaciones.</p>
   <div class="grid" id="grid"></div>
   <p class="more"><a class="btn alt" href="/">Ver todas las cámaras</a></p>
 </section>
@@ -97,6 +99,12 @@ footer{text-align:center;color:var(--ink-soft);font-size:14px;padding:26px 20px 
   </div>
 </section>
 
+<section class="wrap" id="accesorios" hidden>
+  <h2>Lentes, flashes y accesorios nuevos</h2>
+  <p class="lead">Para quien ya tiene cámara y quiere sumar algo nuevo.</p>
+  <div class="grid" id="grid2"></div>
+</section>
+
 <section class="wrap">
   <h2>Cómo la recibís</h2>
   <div class="how">
@@ -112,28 +120,44 @@ footer{text-align:center;color:var(--ink-soft);font-size:14px;padding:26px 20px 
 <script src="/data.js"></script>
 <script>
 const WA = "5491166553748";
-const FEATURED = [1791578100515,1791578100512,1791578100493,1791560525282,1791578100489,313,1790865198396,1791578100516,318,176,297,1791559956680];
 const wa = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
 document.getElementById('giftWa').href = wa('Hola! Quiero comprar una Gift Card para el Día de la Madre.');
 document.getElementById('helpWa').href = wa('Hola! Quiero regalar una cámara para el Día de la Madre. ¿Me ayudan a elegir?');
-const grid = document.getElementById('grid');
-FEATURED.map(id => ITEMS.find(i => i.id === id)).filter(Boolean).forEach(item => {
-  const card = document.createElement('article');
-  card.className = 'card';
-  const code = item.code ? ` (Código: ${item.code})` : '';
-  const link = `https://www.100camarasvintage.com/#producto-${item.id}`;
-  const a = document.createElement('a');
-  a.className = 'img'; a.href = `/#producto-${item.id}`;
-  const img = document.createElement('img');
-  img.src = '/images/' + (item.thumb || item.photos[0]); img.alt = item.title; img.loading = 'lazy';
-  a.appendChild(img);
-  const body = document.createElement('div'); body.className = 'body';
-  const h = document.createElement('h3'); h.textContent = item.title;
-  const p = document.createElement('div'); p.className = 'price'; p.textContent = item.price;
-  const w = document.createElement('a'); w.className = 'wa'; w.target = '_blank'; w.rel = 'noopener';
-  w.href = wa(`Hola! Te consulto por: ${item.title}${code}\n${link}`); w.textContent = 'Consultar por WhatsApp';
-  body.append(h, p, w); card.append(a, body); grid.appendChild(card);
-});
+const NEW_BOX = 'Cámaras nuevas en caja sin uso';
+const CAM_CATS = ['Cámaras point and shoot','Cámaras digitales','Cámaras analógicas'];
+const priceNum = p => Number(String(p).replace(/[^\d]/g,'')) || 0;
+const estado = i => ((i.description || '').match(/^\s*estado:[^\n]*/im) || [''])[0].trim();
+// "Nuevo" = está en la colección de nuevas en caja, o el Estado dice Nuevo, o el título dice nuevo/nueva (sin contar "como nuevo")
+const isNew = i => !i.hidden && i.category.indexOf('Gift Card') === -1 && (
+  i.category.includes(NEW_BOX) ||
+  /^estado:\s*nuev[oa]/i.test(estado(i)) ||
+  /\bnuev[oa]\b/i.test(i.title.replace(/como nuevo/ig, '')));
+const newItems = ITEMS.filter(isNew).sort((a, b) => priceNum(a.price) - priceNum(b.price));
+const cameras = newItems.filter(i => i.category.some(c => CAM_CATS.includes(c)));
+const others = newItems.filter(i => !cameras.includes(i));
+function render(list, grid) {
+  list.forEach(item => {
+    const card = document.createElement('article');
+    card.className = 'card';
+    const code = item.code ? ` (Código: ${item.code})` : '';
+    const link = `https://www.100camarasvintage.com/#producto-${item.id}`;
+    const a = document.createElement('a');
+    a.className = 'img'; a.href = `/#producto-${item.id}`;
+    const img = document.createElement('img');
+    img.src = '/images/' + (item.thumb || item.photos[0]); img.alt = item.title; img.loading = 'lazy';
+    a.appendChild(img);
+    const body = document.createElement('div'); body.className = 'body';
+    const tag = document.createElement('span'); tag.className = 'tag';
+    tag.textContent = item.category.includes(NEW_BOX) ? 'Nuevo en caja' : 'Nuevo';
+    const h = document.createElement('h3'); h.textContent = item.title;
+    const p = document.createElement('div'); p.className = 'price'; p.textContent = item.price;
+    const w = document.createElement('a'); w.className = 'wa'; w.target = '_blank'; w.rel = 'noopener';
+    w.href = wa(`Hola! Te consulto por: ${item.title}${code}\n${link}`); w.textContent = 'Consultar por WhatsApp';
+    body.append(tag, h, p, w); card.append(a, body); grid.appendChild(card);
+  });
+}
+render(cameras, document.getElementById('grid'));
+if (others.length) { document.getElementById('accesorios').hidden = false; render(others, document.getElementById('grid2')); }
 </script>
 </body>
 </html>
