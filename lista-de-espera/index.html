@@ -142,7 +142,7 @@ form.addEventListener('submit', async e => {
     // 1) copia guardada en Netlify (Forms)  2) aviso por mail a Jenny (FormSubmit, gratis)
     const toNetlify = fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:new URLSearchParams(fd).toString()}).then(r => r.ok).catch(() => false);
     const mail = {
-      nombre: fd.get('nombre'), whatsapp: fd.get('whatsapp'), email: fd.get('email') || '', busco: fd.get('busco'), presupuesto: fd.get('presupuesto') || '',
+      'Nombre': fd.get('nombre'), 'WhatsApp': fd.get('whatsapp'), email: fd.get('email') || '', 'Qué busca': fd.get('busco'), 'Presupuesto': fd.get('presupuesto') || '',
       _subject: 'Nueva anotación: Avisame cuando llegue', _template: 'table', _captcha: 'false', _honey: fd.get('bot-field') || ''
     };
     const toMail = fetch('https://formsubmit.co/ajax/jennycripto.eth@gmail.com', {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify(mail)}).then(r => r.ok).catch(() => false);
