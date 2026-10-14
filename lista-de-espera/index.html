@@ -138,8 +138,16 @@ form.addEventListener('submit', async e => {
   err.style.display = 'none';
   const btn = form.querySelector('button'); btn.disabled = true; btn.textContent = 'Enviando…';
   try {
-    const r = await fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:new URLSearchParams(new FormData(form)).toString()});
-    if (!r.ok) throw new Error(r.status);
+    const fd = new FormData(form);
+    // 1) copia guardada en Netlify (Forms)  2) aviso por mail a Jenny (FormSubmit, gratis)
+    const toNetlify = fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:new URLSearchParams(fd).toString()}).then(r => r.ok).catch(() => false);
+    const mail = {
+      nombre: fd.get('nombre'), whatsapp: fd.get('whatsapp'), email: fd.get('email') || '', busco: fd.get('busco'), presupuesto: fd.get('presupuesto') || '',
+      _subject: 'Nueva anotación en la lista de espera', _template: 'table', _captcha: 'false', _honey: fd.get('bot-field') || ''
+    };
+    const toMail = fetch('https://formsubmit.co/ajax/jennycripto.eth@gmail.com', {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify(mail)}).then(r => r.ok).catch(() => false);
+    const [a, b] = await Promise.all([toNetlify, toMail]);
+    if (!a && !b) throw new Error('fail');
     showOk();
   } catch (x) {
     err.style.display = 'block'; btn.disabled = false; btn.textContent = 'Anotarme en la lista';
