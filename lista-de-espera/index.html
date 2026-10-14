@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de espera — 100 Cámaras Vintage</title>
+<meta name="description" content="Contanos qué cámara, lente o accesorio estás buscando y te avisamos por WhatsApp apenas entre algo parecido. 100 Cámaras Vintage.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="100 Cámaras Vintage">
+<meta property="og:title" content="Lista de espera — 100 Cámaras Vintage">
+<meta property="og:description" content="Decinos qué estás buscando y te avisamos apenas entre.">
+<meta property="og:image" content="https://www.100camarasvintage.com/images/brand/favicon-512.png">
+<meta property="og:url" content="https://www.100camarasvintage.com/lista-de-espera/">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/brand/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/brand/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bevan&family=Yellowtail&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--terracotta:#a9694c;--terracotta-dark:#8b5439;--forest:#2e4a3b;--forest-dark:#1f3329;--cream:#f3e8d3;--cream-bg:#faf3e7;--ink:#2b2420;--ink-soft:#5a4f45;--white:#fff;--shadow:0 2px 10px rgba(43,36,32,.12)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream-bg);color:var(--ink);font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+a{color:inherit}
+.top{border-bottom:3px solid var(--forest);background:var(--cream-bg)}
+.top-inner{max-width:1100px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;font-family:'Bevan',serif;font-size:24px;color:var(--forest)}
+.brand img{width:44px;height:44px;border-radius:50%}
+.back{font-size:14px;font-weight:600;color:var(--forest);text-decoration:none;border:2px solid var(--forest);padding:7px 14px;border-radius:4px}
+.back:hover{background:var(--forest);color:var(--white)}
+.hero{background:var(--forest);color:var(--cream);text-align:center;padding:48px 20px 52px}
+.hero small{display:block;letter-spacing:.14em;text-transform:uppercase;font-size:13px;margin-bottom:10px;color:#d9c3a0}
+.hero h1{font-family:'Bevan',serif;font-weight:400;font-size:clamp(30px,6vw,52px);line-height:1.1;margin:0 0 14px}
+.hero p{max-width:620px;margin:0 auto 22px;font-size:18px}
+.btn{display:inline-block;background:var(--terracotta);color:var(--white);text-decoration:none;font-weight:700;padding:13px 24px;border-radius:4px;font-size:16px;border:0;cursor:pointer}
+.btn:hover{background:var(--terracotta-dark)}
+.btn.alt{background:var(--forest);}
+.btn.alt:hover{background:var(--forest-dark)}
+.wrap{max-width:1100px;margin:0 auto;padding:40px 20px}
+h2{font-family:'Bevan',serif;font-weight:400;font-size:clamp(24px,4vw,34px);color:var(--forest);margin:0 0 8px}
+.lead{color:var(--ink-soft);margin:0 0 26px;max-width:680px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.card{background:var(--white);border-radius:4px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+.card a.img{display:block;flex:none;width:100%;aspect-ratio:1/1;background:#eee;overflow:hidden}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+.card .body{padding:12px 14px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-size:15px;line-height:1.3;margin:0;font-weight:600}
+.card .tag{align-self:flex-start;background:var(--cream);color:var(--forest);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:3px}
+.card .price{font-family:'Bevan',serif;color:var(--terracotta-dark);font-size:20px}
+.card .wa{margin-top:auto;text-align:center;background:var(--forest);color:var(--white);text-decoration:none;font-weight:600;font-size:14px;padding:9px 10px;border-radius:4px}
+.card .wa:hover{background:var(--forest-dark)}
+.gift{background:var(--cream);border-top:3px solid var(--forest);border-bottom:3px solid var(--forest)}
+.gift-inner{max-width:1100px;margin:0 auto;padding:44px 20px;display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+.gift img{width:100%;border-radius:4px;box-shadow:var(--shadow);display:block}
+.gift ul{padding-left:20px;margin:12px 0 22px}
+.amounts{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+.amounts span{background:var(--white);border:2px solid var(--forest);border-radius:4px;padding:6px 12px;font-weight:700;color:var(--forest)}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:6px}
+.how div{background:var(--white);border-radius:4px;padding:18px;box-shadow:var(--shadow)}
+.how b{font-family:'Bevan',serif;font-weight:400;color:var(--terracotta-dark);font-size:18px;display:block;margin-bottom:4px}
+.more{text-align:center;margin-top:28px}
+footer{text-align:center;color:var(--ink-soft);font-size:14px;padding:26px 20px 40px}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,1fr);gap:12px}.card h3{font-size:13px}.card .tag{align-self:flex-start;background:var(--cream);color:var(--forest);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:3px}
+.card .price{font-size:17px}.card .wa{font-size:12.5px}.gift-inner{grid-template-columns:1fr}.hero{padding:36px 18px 40px}.hero p{font-size:16px}}
+
+form{background:var(--white);border-radius:4px;box-shadow:var(--shadow);padding:24px;max-width:640px;margin:0 auto}
+label{display:block;font-weight:600;margin:16px 0 6px}
+label small{font-weight:400;color:var(--ink-soft)}
+input[type=text],input[type=tel],input[type=email],textarea{width:100%;font:inherit;font-size:16px;padding:11px 12px;border:2px solid #d8cbb4;border-radius:4px;background:#fffdf8;color:var(--ink)}
+input:focus,textarea:focus{outline:none;border-color:var(--forest)}
+textarea{min-height:110px;resize:vertical}
+.hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+.check{font-weight:400;display:flex;gap:10px;align-items:flex-start;margin-top:18px;font-size:14px;color:var(--ink-soft)}
+.check input{margin-top:4px}
+form .btn{width:100%;margin-top:20px}
+.msg{max-width:640px;margin:0 auto;background:var(--cream);border:2px solid var(--forest);border-radius:4px;padding:26px;text-align:center}
+.msg h2{font-size:26px}
+.err{color:#a02f2f;font-weight:600;margin-top:12px;display:none}
+.ideas{max-width:640px;margin:22px auto 0;color:var(--ink-soft);font-size:15px}
+@media(max-width:760px){.hero{padding:36px 18px 40px}.hero p{font-size:16px}form{padding:18px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-inner">
+  <a class="brand" href="/"><img src="/images/brand/logo-badge.png" alt="" width="44" height="44">100 Cámaras</a>
+  <a class="back" href="/">Ver todo el catálogo</a>
+</div></header>
+
+<section class="hero">
+  <small>Lista de espera</small>
+  <h1>¿No encontrás lo que buscás?</h1>
+  <p>Contanos qué cámara, lente o accesorio querés y te avisamos por WhatsApp apenas entre algo parecido.</p>
+</section>
+
+<section class="wrap">
+  <div id="formBox">
+    <form name="lista-de-espera" method="POST" action="/lista-de-espera/?enviado=1" data-netlify="true" netlify-honeypot="bot-field" id="waitForm">
+      <input type="hidden" name="form-name" value="lista-de-espera">
+      <p class="hp"><label>No completar esto: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+      <label for="nombre">Tu nombre</label>
+      <input type="text" id="nombre" name="nombre" required autocomplete="name">
+
+      <label for="whatsapp">WhatsApp <small>(con código de área, así te escribimos)</small></label>
+      <input type="tel" id="whatsapp" name="whatsapp" required autocomplete="tel" placeholder="Ej: 11 1234 5678">
+
+      <label for="email">Email <small>(opcional)</small></label>
+      <input type="email" id="email" name="email" autocomplete="email">
+
+      <label for="busco">¿Qué estás buscando?</label>
+      <textarea id="busco" name="busco" required placeholder="Ej: Canon AE-1 con lente 50mm, una Polaroid, un flash para Nikon…"></textarea>
+
+      <label for="presupuesto">Presupuesto aproximado <small>(opcional)</small></label>
+      <input type="text" id="presupuesto" name="presupuesto" placeholder="Ej: hasta $150.000">
+
+      <label class="check"><input type="checkbox" name="acepta" required> <span>Acepto que 100 Cámaras Vintage use estos datos solo para avisarme cuando entre lo que busco.</span></label>
+
+      <button class="btn" type="submit">Anotarme en la lista</button>
+      <div class="err" id="err">No pudimos enviarlo. Probá de nuevo o escribinos por WhatsApp.</div>
+    </form>
+    <p class="ideas">Cuando cargamos algo nuevo, revisamos la lista y te escribimos si coincide con lo que pediste. No te mandamos nada más.</p>
+  </div>
+  <div class="msg" id="okBox" hidden>
+    <h2>¡Listo, ya estás anotado/a!</h2>
+    <p>Apenas entre algo parecido a lo que buscás, te escribimos por WhatsApp.</p>
+    <p style="margin-top:18px"><a class="btn" href="/">Seguir mirando el catálogo</a></p>
+  </div>
+</section>
+
+<footer>100 Cámaras Vintage · @100camarasvintage · Cramer y Monroe, Belgrano, CABA · Envíos a todo el país</footer>
+
+<script>
+const form = document.getElementById('waitForm');
+const okBox = document.getElementById('okBox'), formBox = document.getElementById('formBox'), err = document.getElementById('err');
+function showOk(){ formBox.hidden = true; okBox.hidden = false; window.scrollTo({top:0,behavior:'smooth'}); }
+if (location.search.includes('enviado=1')) showOk();
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  err.style.display = 'none';
+  const btn = form.querySelector('button'); btn.disabled = true; btn.textContent = 'Enviando…';
+  try {
+    const r = await fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:new URLSearchParams(new FormData(form)).toString()});
+    if (!r.ok) throw new Error(r.status);
+    showOk();
+  } catch (x) {
+    err.style.display = 'block'; btn.disabled = false; btn.textContent = 'Anotarme en la lista';
+  }
+});
+</script>
+</body>
+</html>

@@ -157,7 +157,7 @@ function main() {
 
   // sitemap
   const today = new Date().toISOString().slice(0, 10);
-  const staticUrls = ['/', '/nuevos-ingresos/', '/dia-de-la-madre/'].filter(u => u === '/' || fs.existsSync(path.join(ROOT, u.replace(/^\/|\/$/g, ''), 'index.html')));
+  const staticUrls = ['/', '/nuevos-ingresos/', '/dia-de-la-madre/', '/lista-de-espera/'].filter(u => u === '/' || fs.existsSync(path.join(ROOT, u.replace(/^\/|\/$/g, ''), 'index.html')));
   const urls = staticUrls.map(u => `  <url><loc>${SITE}${u}</loc><lastmod>${today}</lastmod></url>`)
     .concat(items.map(i => `  <url><loc>${esc(i.url)}</loc><lastmod>${today}</lastmod></url>`));
   fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`, 'utf-8');
