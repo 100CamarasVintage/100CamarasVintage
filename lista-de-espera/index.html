@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lista de espera — 100 Cámaras Vintage</title>
+<title>Avisame cuando llegue — 100 Cámaras Vintage</title>
 <meta name="description" content="Contanos qué cámara, lente o accesorio estás buscando y te avisamos por WhatsApp apenas entre algo parecido. 100 Cámaras Vintage.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="100 Cámaras Vintage">
-<meta property="og:title" content="Lista de espera — 100 Cámaras Vintage">
+<meta property="og:title" content="Avisame cuando llegue — 100 Cámaras Vintage">
 <meta property="og:description" content="Decinos qué estás buscando y te avisamos apenas entre.">
 <meta property="og:image" content="https://www.100camarasvintage.com/images/brand/favicon-512.png">
 <meta property="og:url" content="https://www.100camarasvintage.com/lista-de-espera/">
@@ -86,7 +86,7 @@ form .btn{width:100%;margin-top:20px}
 </div></header>
 
 <section class="hero">
-  <small>Lista de espera</small>
+  <small>Avisame cuando llegue</small>
   <h1>¿No encontrás lo que buscás?</h1>
   <p>Contanos qué cámara, lente o accesorio querés y te avisamos por WhatsApp apenas entre algo parecido.</p>
 </section>
@@ -114,7 +114,7 @@ form .btn{width:100%;margin-top:20px}
 
       <label class="check"><input type="checkbox" name="acepta" required> <span>Acepto que 100 Cámaras Vintage use estos datos solo para avisarme cuando entre lo que busco.</span></label>
 
-      <button class="btn" type="submit">Anotarme en la lista</button>
+      <button class="btn" type="submit">Avisame cuando llegue</button>
       <div class="err" id="err">No pudimos enviarlo. Probá de nuevo o escribinos por WhatsApp.</div>
     </form>
     <p class="ideas">Cuando cargamos algo nuevo, revisamos la lista y te escribimos si coincide con lo que pediste. No te mandamos nada más.</p>
@@ -143,14 +143,14 @@ form.addEventListener('submit', async e => {
     const toNetlify = fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:new URLSearchParams(fd).toString()}).then(r => r.ok).catch(() => false);
     const mail = {
       nombre: fd.get('nombre'), whatsapp: fd.get('whatsapp'), email: fd.get('email') || '', busco: fd.get('busco'), presupuesto: fd.get('presupuesto') || '',
-      _subject: 'Nueva anotación en la lista de espera', _template: 'table', _captcha: 'false', _honey: fd.get('bot-field') || ''
+      _subject: 'Nueva anotación: Avisame cuando llegue', _template: 'table', _captcha: 'false', _honey: fd.get('bot-field') || ''
     };
     const toMail = fetch('https://formsubmit.co/ajax/jennycripto.eth@gmail.com', {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify(mail)}).then(r => r.ok).catch(() => false);
     const [a, b] = await Promise.all([toNetlify, toMail]);
     if (!a && !b) throw new Error('fail');
     showOk();
   } catch (x) {
-    err.style.display = 'block'; btn.disabled = false; btn.textContent = 'Anotarme en la lista';
+    err.style.display = 'block'; btn.disabled = false; btn.textContent = 'Avisame cuando llegue';
   }
 });
 </script>
