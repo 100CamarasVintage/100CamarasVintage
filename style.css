@@ -897,3 +897,35 @@ a { color: inherit; }
 }
 
 .whatsapp-btn:hover { background: var(--forest-dark); }
+
+
+/* ---------- Íconos WhatsApp / Instagram (header) ---------- */
+.social-icons { display: flex; align-items: center; gap: 10px; flex: none; }
+.social-ico {
+  width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center;
+  text-decoration: none; transition: transform .15s ease, box-shadow .15s ease;
+  box-shadow: 0 1px 4px rgba(43,36,32,.25);
+}
+.social-ico:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(43,36,32,.3); }
+.wa-ico { background: #25D366; border-radius: 50%; }
+.ig-ico { background: linear-gradient(45deg, #f9a03c 0%, #e1306c 45%, #c13584 70%, #833ab4 100%); border-radius: 11px; }
+@media (max-width: 640px) {
+  .social-icons { order: 2; }
+  .search-wrap { flex: 1 1 calc(100% - 110px); }
+}
+
+/* ---------- Burbuja Lista de espera ---------- */
+.wait-bubble {
+  position: fixed; right: 16px; bottom: 16px; z-index: 40;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--terracotta); color: var(--white); text-decoration: none;
+  font-weight: 700; font-size: 14px; padding: 11px 18px; border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(43,36,32,.35); border: 2px solid var(--cream-bg);
+}
+.wait-bubble:hover { background: var(--terracotta-dark); }
+.wb-short { display: none; }
+@media (max-width: 640px) {
+  .wb-full { display: none; }
+  .wb-short { display: inline; }
+  .wait-bubble { right: 12px; bottom: 12px; font-size: 13.5px; padding: 10px 15px; }
+}
