@@ -41,6 +41,7 @@ function main() {
   // reactivarlos despues (por ejemplo si vuelve a entrar stock).
   const items = allItems.filter(item => !item.hidden);
   const ocultos = allItems.length - items.length;
+  const allSorted = allItems.slice(); // (se ordena mas abajo, para el panel visual)
 
   // Ordenar segun content/orden.json (lista arrastrable del panel de admin).
   // Los productos que estan en esa lista se muestran en el orden en que fueron
@@ -70,12 +71,22 @@ function main() {
     }
     return [0, -(item.id || 0)];
   }
-  items.sort((a, b) => {
+  const cmp = (a, b) => {
     const ka = ordenKey(a);
     const kb = ordenKey(b);
     if (ka[0] !== kb[0]) return ka[0] - kb[0];
     return ka[1] - kb[1];
-  });
+  };
+  items.sort(cmp);
+  allSorted.sort(cmp);
+
+  // Panel visual (/admin): todos los productos, incluidos los ocultos, en el mismo orden de la web.
+  try {
+    const todos = allSorted.map((it, i) => Object.assign({}, it, { _file: files[allItems.indexOf(it)] }));
+    fs.writeFileSync(path.join(__dirname, 'admin', 'todos.json'), JSON.stringify(todos), 'utf-8');
+  } catch (e) {
+    console.error('No se pudo generar admin/todos.json (el panel visual no va a cargar).', e);
+  }
 
   const json = JSON.stringify(items, null, 0);
   const output = `const ITEMS = ${json};\n`;

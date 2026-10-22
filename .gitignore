@@ -3,3 +3,6 @@
 /producto/
 /sitemap.xml
 /feed/
+
+# Lo genera build.js en cada deploy (lista completa para el panel /admin)
+/admin/todos.json
