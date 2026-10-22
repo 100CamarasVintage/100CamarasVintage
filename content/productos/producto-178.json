@@ -10,6 +10,7 @@
     "images/IMG-20260908-WA0034.jpg"
   ],
   "price": "$300.000",
+  "hidden": true,
   "orden": 970,
   "code": "424",
   "thumb": "images/IMG-20260908-WA0038.jpg",
