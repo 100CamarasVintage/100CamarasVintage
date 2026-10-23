@@ -1,7 +1,8 @@
 {
   "id": 225,
-  "title": "Camara Minox Guerra Fria",
+  "title": "Minox espía (sin cadena )",
   "price": "$120.000",
+  "hidden": false,
   "category": [
     "Cámaras analógicas",
     "Raras/coleccionables"
@@ -9,13 +10,13 @@
   "code": "32",
   "description": "Estado: Usado - Como nuevo\n\nCámara Minox (años 1958–1978), famosas como cámaras espía de la Guerra Fría.\nFabricadas en Alemania, cuerpo metálico compacto.\nLente Minox Complan 15mm f/3.5.\nExcelente estado, ideales para coleccionistas de fotografía o historia.\nNo tiene la cadeneta por eso esta económica, en otra publicacion tengo otra completa con cadena y estuche\n\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "/images/producto-225-01.jpg",
-    "/images/producto-225-02.jpg",
-    "/images/producto-225-03.jpg",
-    "/images/producto-225-04.jpg",
-    "/images/producto-225-05.jpg",
-    "/images/producto-225-06.jpg",
-    "/images/producto-225-07.jpg"
+    "producto-225-01.jpg",
+    "producto-225-02.jpg",
+    "producto-225-03.jpg",
+    "producto-225-04.jpg",
+    "producto-225-05.jpg",
+    "producto-225-06.jpg",
+    "producto-225-07.jpg"
   ],
-  "thumb": "/images/producto-225-01.jpg"
+  "thumb": "producto-225-01.jpg"
 }

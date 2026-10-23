@@ -1,7 +1,8 @@
 {
   "id": 60,
-  "title": "Camara fuelle Kodak 3A Folding Cartridge Hawk-Eye Model B (para deco)",
+  "title": "Kodak 3A Folding Cartridge Hawk-Eye Model B (para deco)",
   "price": "$160.000",
+  "hidden": false,
   "category": [
     "Cámaras de fuelle",
     "Kodak",
@@ -10,15 +11,15 @@
   "code": "48",
   "description": "Estado: Usado, aceptable\n\nFuelle con entrada de luz, ideal para deco\nMecánicamente la máquina está impecable\n\nKodak No. 3A Folding Cartridge Hawk-Eye\nFilm 122mm\nTamaño imagen: 8x14 cm\nObturador: simple, 1 velocidad + modo B\nDisparo manual\nAño: 1904-1915\n\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "/images/producto-060-01.jpg",
-    "/images/producto-060-02.jpg",
-    "/images/producto-060-03.jpg",
-    "/images/producto-060-04.jpg",
-    "/images/producto-060-05.jpg",
-    "/images/producto-060-06.jpg",
-    "/images/producto-060-07.jpg",
-    "/images/producto-060-08.jpg",
-    "/images/producto-060-09.jpg"
+    "producto-060-01.jpg",
+    "producto-060-02.jpg",
+    "producto-060-03.jpg",
+    "producto-060-04.jpg",
+    "producto-060-05.jpg",
+    "producto-060-06.jpg",
+    "producto-060-07.jpg",
+    "producto-060-08.jpg",
+    "producto-060-09.jpg"
   ],
-  "thumb": "/images/producto-060-01.jpg"
+  "thumb": "producto-060-01.jpg"
 }

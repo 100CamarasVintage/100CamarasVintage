@@ -1,7 +1,8 @@
 {
   "id": 121,
-  "title": "Lente Minolta MD Rokkor-X 45mm f/2 pancake",
+  "title": "Minolta MD Rokkor-X 45mm f/2 pancake",
   "price": "$180.000",
+  "hidden": false,
   "category": [
     "Lentes",
     "Minolta"
@@ -9,12 +10,12 @@
   "code": "79",
   "description": "Estado: Usado - Como nuevo\n\nMinolta MD Rokkor-X 45mm f/2 (Made in Japan) – Pancake clásico compacto, excelente estado, ópticas impecables sin polvo/hongos/rayones, cuerpo negro en muy buen estado, enfoque y diafragma perfectos. Nitidez brutal y colores Rokkor. Ideal para street, mirrorless o cámaras Minolta MD. Incluye tapas.\n\n(La última foto fue sacada con este lente, con una Nikon Z más adaptador)\n\nEstamos en Cramer y Monroe, Belgrano, CABA, donde podés pasar a retirar y probar las cámaras\nTambién hacemos envíos\nSomos @100camarasvintage",
   "photos": [
-    "/images/producto-121-01.jpg",
-    "/images/producto-121-02.jpg",
-    "/images/producto-121-03.jpg",
-    "/images/producto-121-04.jpg",
-    "/images/producto-121-05.jpg",
-    "/images/producto-121-06.jpg"
+    "producto-121-01.jpg",
+    "producto-121-02.jpg",
+    "producto-121-03.jpg",
+    "producto-121-04.jpg",
+    "producto-121-05.jpg",
+    "producto-121-06.jpg"
   ],
-  "thumb": "/images/producto-121-01.jpg"
+  "thumb": "producto-121-01.jpg"
 }
