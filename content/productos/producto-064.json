@@ -1,7 +1,9 @@
 {
   "id": 64,
-  "title": "Nikon EF400SV (flash funciona a veces)",
+  "title": "Nikon EF400SV",
   "price": "$60.000",
+  "hidden": false,
+  "orden": 300,
   "category": [
     "Cámaras point and shoot",
     "Nikon"
@@ -15,6 +17,5 @@
     "IMG-20260802-WA0041.jpg",
     "IMG-20260802-WA0040.jpg"
   ],
-  "thumb": "/images/IMG-20260802-WA0043.jpg",
-  "orden": 300
+  "thumb": "IMG-20260802-WA0043.jpg"
 }

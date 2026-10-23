@@ -1,7 +1,9 @@
 {
   "id": 203,
-  "title": "BRAUN HANDY-S 35 MM PANORAMA",
+  "title": "BRAUN HANDY-S 35 MM PANORAMA nueva",
   "price": "$75.000",
+  "hidden": false,
+  "orden": 520,
   "category": [
     "Cámaras point and shoot",
     "Cámaras nuevas en caja sin uso"
@@ -18,6 +20,5 @@
     "IMG-20260913-WA0088.jpg",
     "IMG-20260913-WA0089.jpg"
   ],
-  "thumb": "images/IMG-20260913-WA0109.jpg",
-  "orden": 520
+  "thumb": "IMG-20260913-WA0090.jpg"
 }
