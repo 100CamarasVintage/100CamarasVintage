@@ -44,6 +44,9 @@ body.is-dragging { user-select: none; -webkit-user-select: none; cursor: grabbin
 .pbadge.code { left: 8px; bottom: 8px; }
 .pbadge.hid { left: 8px; top: 8px; background: #2b2420; color: #fff; }
 .pbadge.pin { right: 8px; top: 8px; background: var(--forest); color: #fff; }
+.pbadge.pos { left: 8px; top: 8px; background: var(--terracotta); color: #fff; font-size: 13px; padding: 3px 9px; }
+.pcard.is-hidden .pbadge.pos { top: 34px; }
+.pcard.just-moved { outline: 4px solid var(--terracotta); outline-offset: 2px; transition: outline-color .4s; }
 .pbadge.chg { right: 8px; bottom: 8px; background: var(--terracotta); color: #fff; }
 .pgrid.ordering .pcard { cursor: grab; touch-action: pan-y; -webkit-touch-callout: none; user-select: none; -webkit-user-select: none; }
 .pgrid.ordering .pcard:hover { transform: none; }
@@ -53,7 +56,7 @@ body.is-dragging { user-select: none; -webkit-user-select: none; cursor: grabbin
   flex: 1; border: 1.5px solid var(--forest); background: #fff; color: var(--forest);
   border-radius: 8px; padding: 6px 4px; font: 600 12.5px 'Archivo', sans-serif; cursor: pointer;
 }
-.pcard-order button[data-act=first] { flex: 2; }
+.pcard-order button[data-act=goto] { flex: 2.2; }
 .pcard-order button:hover { background: var(--forest); color: #fff; }
 .pcard.drag-src { opacity: .25; }
 .pcard.drag-ghost {
@@ -125,7 +128,19 @@ textarea.f-input { resize: vertical; line-height: 1.5; }
 .toast { position: fixed; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 900; background: var(--ink); color: #fff; padding: 12px 20px; border-radius: 999px; font-size: 14px; max-width: 92vw; text-align: center; box-shadow: var(--shadow); }
 .toast[hidden], .order-banner[hidden], [hidden] { display: none !important; }
 
+/* Modo acomodar: tarjetas más chicas para ver más cámaras a la vez */
+.pgrid.ordering .card-title { font-size: 12.5px; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pgrid.ordering .card-price { font-size: 12.5px; }
+.pgrid.ordering .pcard-order button { padding: 5px 2px; font-size: 12px; }
 @media (max-width: 640px) {
+  .pgrid.ordering { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 10px; }
+  .pgrid.ordering .pcard { flex-direction: column; align-items: stretch; gap: 0; padding: 0; border: 1px solid rgba(43,36,32,.15); border-radius: 10px; background: #fff; overflow: hidden; }
+  .pgrid.ordering .pcard .card-photo-wrap { width: 100%; height: auto; flex: none; aspect-ratio: 1; border-radius: 0; }
+  .pgrid.ordering .pcard-order button[data-act=goto] { flex: 2.4; }
+  .pgrid.ordering .pbadge { font-size: 10px; padding: 2px 6px; }
+  .pgrid.ordering .pbadge.pos { font-size: 12px; }
+  .pgrid.ordering .card-body { padding: 6px 6px 8px; }
+
   .admin-bar { padding: 8px 12px; gap: 6px; }
   .admin-bar .tag { flex: 1 1 100%; margin-right: 0; }
   .abtn { padding: 8px 11px; font-size: 12.5px; flex: 1 1 auto; justify-content: center; }

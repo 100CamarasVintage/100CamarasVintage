@@ -147,20 +147,21 @@
     });
   }
 
-  function cardHtml(it) {
+  function cardHtml(it, pos) {
     var dirty = isDirty(it);
     return '<div class="card-photo-wrap">' +
       '<img src="' + esc(imgUrl(it.thumb || (it.photos || [])[0])) + '" alt="" loading="lazy" draggable="false">' +
       (it.hidden ? '<span class="pbadge hid">OCULTA</span>' : '') +
       (it.pinned ? '<span class="pbadge pin">FIJA</span>' : '') +
       (it.code ? '<span class="pbadge code">#' + esc(it.code) + '</span>' : '') +
+      (orderMode && pos ? '<span class="pbadge pos">' + pos + '</span>' : '') +
       (dirty ? '<span class="pbadge chg">' + (it._new ? 'NUEVO' : 'cambiado') + '</span>' : '') +
       '</div>' +
       '<div class="card-body"><div class="card-title">' + esc(it.title) + '</div>' +
       '<div class="card-price">' + esc(it.price) + '</div>' +
       (orderMode ? '<div class="pcard-order">' +
         '<button type="button" data-act="prev" title="Un lugar antes">←</button>' +
-        '<button type="button" data-act="first" title="Mandar al principio">⤒ Primero</button>' +
+        '<button type="button" data-act="goto" title="Mandar a un lugar exacto">Lugar</button>' +
         '<button type="button" data-act="next" title="Un lugar después">→</button></div>' : '') +
       '</div>';
   }
@@ -170,11 +171,11 @@
     var vis = visible();
     grid.className = 'grid pgrid' + (orderMode ? ' ordering' : '');
     grid.innerHTML = '';
-    vis.forEach(function (it) {
+    vis.forEach(function (it, ix) {
       var c = document.createElement('div');
       c.className = 'card pcard' + (it.hidden ? ' is-hidden' : '');
       c.dataset.id = it.id;
-      c.innerHTML = cardHtml(it);
+      c.innerHTML = cardHtml(it, ix + 1);
       grid.appendChild(c);
     });
     $('#emptyState').hidden = vis.length > 0;
@@ -187,8 +188,8 @@
     banner.hidden = !orderMode;
     if (orderMode) {
       $('#orderBannerTxt').textContent = sel.length
-        ? 'Acomodando «' + sel.join(' + ') + '». Arrastrá las cámaras (mantené apretado en el celu) para ordenarlas dentro de esa carpeta.'
-        : 'Acomodando todo el catálogo. Arrastrá las cámaras (mantené apretado en el celu), o usá los botones de cada una. Para ordenar dentro de una carpeta, elegí primero la categoría arriba.';
+        ? 'Acomodando «' + sel.join(' + ') + '». Arrastrá cada cámara (en el celu, mantené apretado) o tocá «Lugar» para mandarla directo a una posición.'
+        : 'Acomodando todo el catálogo. Arrastrá cada cámara (en el celu, mantené apretado) o tocá «Lugar» para mandarla directo a una posición. Para ordenar dentro de una carpeta, elegí primero la categoría arriba.';
     }
   }
 
@@ -244,6 +245,53 @@
     var y = window.scrollY;
     renderGrid(); renderStatus();
     window.scrollTo(0, y);
+  }
+
+  function moveTo(id, pos) {
+    var v = visIds();
+    var i = v.indexOf(id);
+    if (i === -1) return;
+    var nv = v.slice();
+    nv.splice(i, 1);
+    pos = Math.max(1, Math.min(nv.length + 1, Math.round(pos) || 1));
+    nv.splice(pos - 1, 0, id);
+    applyVisibleOrder(nv);
+    renderGrid(); renderStatus();
+    var card = document.querySelector('#grid .pcard[data-id="' + id + '"]');
+    if (card) {
+      card.scrollIntoView({ block: 'center' });
+      card.classList.add('just-moved');
+      setTimeout(function () { card.classList.remove('just-moved'); }, 1800);
+    }
+    toast('Quedó en el lugar ' + pos + ' de ' + (nv.length + 1));
+  }
+  function openGoto(id) {
+    var v = visIds();
+    var it = items.filter(function (i) { return i.id === id; })[0];
+    if (!it) return;
+    var cur = v.indexOf(id) + 1;
+    $('#posBody').innerHTML =
+      '<h2>Mover a otro lugar</h2>' +
+      '<p class="pub-lead"><b>' + esc(it.title) + '</b><br>Ahora está en el lugar <b>' + cur + '</b> de ' + v.length + '.</p>' +
+      '<label class="f-label" for="posNum">¿A qué lugar lo mandás? <small>(1 = primero, ' + v.length + ' = último)</small></label>' +
+      '<input class="f-input" id="posNum" type="number" inputmode="numeric" min="1" max="' + v.length + '" value="' + cur + '">' +
+      '<div class="ed-actions">' +
+      '<button type="button" class="btn ghost" data-pos="cancel">Cancelar</button>' +
+      '<button type="button" class="btn ghost" data-pos="first">Al principio</button>' +
+      '<button type="button" class="btn ghost" data-pos="last">Al final</button>' +
+      '<button type="button" class="btn primary" data-pos="ok">Mover</button></div>';
+    $('#posOverlay').hidden = false;
+    $('#posOverlay').dataset.id = id;
+    setTimeout(function () { var n = $('#posNum'); if (n) { n.focus(); n.select(); } }, 50);
+  }
+  function closeGoto() { $('#posOverlay').hidden = true; }
+  function doGoto(kind) {
+    var id = Number($('#posOverlay').dataset.id);
+    var n = visIds().length;
+    var pos = kind === 'first' ? 1 : kind === 'last' ? n : Number($('#posNum').value);
+    if (kind === 'ok' && !(pos >= 1)) { toast('Poné un número de lugar'); return; }
+    closeGoto();
+    moveTo(id, pos);
   }
 
   /* Arrastrar y soltar (ratón y dedo), sin librerías */
@@ -657,10 +705,17 @@
       if (!card) return;
       var id = Number(card.dataset.id);
       var b = e.target.closest('button[data-act]');
-      if (b) { e.stopPropagation(); moveCard(id, b.dataset.act); return; }
+      if (b) { e.stopPropagation(); if (b.dataset.act === 'goto') openGoto(id); else moveCard(id, b.dataset.act); return; }
       if (orderMode) return;
       openEditor(id);
     });
+
+    $('#posOverlay').addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-pos]');
+      if (b) { if (b.dataset.pos === 'cancel') closeGoto(); else doGoto(b.dataset.pos); return; }
+      if (e.target === $('#posOverlay')) closeGoto();
+    });
+    $('#posOverlay').addEventListener('keydown', function (e) { if (e.key === 'Enter') doGoto('ok'); if (e.key === 'Escape') closeGoto(); });
 
     $('#editOverlay').addEventListener('click', function (e) {
       if (e.target === $('#editOverlay')) { if (confirmClose()) closeEditor(); }
