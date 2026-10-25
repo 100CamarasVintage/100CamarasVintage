@@ -119,6 +119,7 @@ textarea.f-input { resize: vertical; line-height: 1.5; }
 .btn.primary { background: var(--forest); color: #fff; }
 .btn.primary:disabled { opacity: .5; }
 .btn.ghost { background: #fff; color: var(--forest); }
+.btn.danger { background: #fff; color: #b3261e; border-color: #b3261e; margin-right: auto; }
 .pub-lead { color: var(--ink-soft); margin: 0 0 8px; }
 .pub-list { margin: 0; padding-left: 20px; line-height: 1.7; max-height: 36vh; overflow: auto; }
 .pub-msg { margin-top: 14px; padding: 12px 14px; border-radius: 10px; background: var(--cream-bg); font-size: 14.5px; line-height: 1.45; }

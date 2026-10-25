@@ -42,6 +42,7 @@
   var catOrders = {};         // carpeta -> ids en el orden que se ve dentro de esa carpeta
   var baseCatOrders = '{}';   // lo mismo, como estaba publicado
   var pending = {};           // nombre de foto nueva -> { b64, url }
+  var deleted = [];           // publicaciones marcadas para eliminar (se borran al publicar): { id, file, title, photos }
   var cats = {};              // categorías seleccionadas
   var onlyHidden = false;
   var orderMode = false;
@@ -140,7 +141,7 @@
     try {
       var d = dirtyItems();
       var gd = globalOrderDirty(), cd = changedCats();
-      if (!d.length && !gd && !cd.length) { localStorage.removeItem(DRAFT_KEY); return; }
+      if (!d.length && !gd && !cd.length && !deleted.length) { localStorage.removeItem(DRAFT_KEY); return; }
       var draft = { ts: Date.now(), items: d.map(function (it) {
         var c = clean(it);
         c._file = it._file;
@@ -149,6 +150,7 @@
         if (pending[c.thumb]) c.thumb = c.photos[0] || '';
         return c;
       }) };
+      if (deleted.length) draft.deleted = deleted;
       if (gd) draft.order = items.map(function (i) { return i.id; });
       if (cd.length) { draft.catDiff = {}; cd.forEach(function (k) { draft.catDiff[k] = catOrders[k]; }); }
       localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
@@ -159,6 +161,13 @@
       var d = JSON.parse(localStorage.getItem(DRAFT_KEY) || 'null');
       if (!d || Date.now() - d.ts > 14 * 24 * 3600 * 1000) return;
       var n = 0;
+      (d.deleted || []).forEach(function (dd) {
+        if (items.some(function (i) { return i.id === dd.id; })) {
+          items = items.filter(function (i) { return i.id !== dd.id; });
+          deleted.push(dd);
+          n++;
+        }
+      });
       (d.items || []).forEach(function (di) {
         var cur = items.filter(function (i) { return i.id === di.id; })[0];
         if (cur) { Object.keys(di).forEach(function (k) { cur[k] = di[k]; }); n++; }
@@ -282,7 +291,7 @@
     saveDraft();
     var d = dirtyItems().length;
     var od = orderDirty();
-    var n = d + (od ? 1 : 0);
+    var n = d + deleted.length + (od ? 1 : 0);
     var b = $('#publishBtn');
     b.disabled = n === 0;
     $('#publishCount').textContent = n ? '(' + n + ')' : '';
@@ -543,6 +552,7 @@
     h += '<label class="f-label" for="edDesc">Descripción</label><textarea id="edDesc" class="f-input" rows="12">' + esc(d.description) + '</textarea>';
     h += '<div class="ed-small"><button type="button" class="link-btn" id="edFooterBtn">Agregar el texto final de la web (Cramer y Monroe…)</button></div>';
     h += '<div class="ed-actions">' +
+      (!ed.isNew ? '<button type="button" class="btn danger" id="edDelete">🗑️ Eliminar publicación</button>' : '') +
       '<button type="button" class="btn ghost" id="edCancel">Cancelar</button>' +
       (!ed.isNew && isDirtyId(ed.id) ? '<button type="button" class="btn ghost" id="edRevert">Deshacer mis cambios</button>' : '') +
       '<button type="button" class="btn primary" id="edSave">Guardar</button></div>';
@@ -598,6 +608,31 @@
     closeEditor();
     renderAll();
     toast('Guardado en el panel. Cuando termines tocá «Publicar en la web».', 4200);
+  }
+
+  function deleteCurrent() {
+    var id = ed.id;
+    var it = items.filter(function (i) { return i.id === id; })[0];
+    if (!it) return;
+    var title = it.title || 'esta publicación';
+    var msg = '¿Eliminar «' + title + '» para siempre?\n\nSe borra de la web (con sus fotos) cuando toques «Publicar en la web». No se puede deshacer. Si solo querés que no se vea, usá «Oculta / vendida».';
+    if (!window.confirm(msg)) return;
+    if (!it._new) {
+      var photos = (it.photos || []).filter(function (n) { return !pending[n]; });
+      try {
+        (JSON.parse(baseline[id]).photos || []).forEach(function (n) { if (photos.indexOf(n) === -1) photos.push(n); });
+      } catch (e) { /* sin foto original */ }
+      deleted.push({ id: id, file: it._file, title: title, photos: photos });
+    }
+    items = items.filter(function (i) { return i.id !== id; });
+    Object.keys(catOrders).forEach(function (k) {
+      if (Array.isArray(catOrders[k]) && catOrders[k].indexOf(id) !== -1) {
+        catOrders[k] = catOrders[k].filter(function (x) { return x !== id; });
+      }
+    });
+    closeEditor();
+    renderAll();
+    toast('Marcada para eliminar. Cuando termines tocá «Publicar en la web».', 5000);
   }
 
   function revertEditor() {
@@ -675,6 +710,14 @@
     Object.keys(used).forEach(function (n) {
       if (pending[n]) files.push({ path: 'images/' + n, b64: pending[n].b64, label: 'foto: ' + n });
     });
+    deleted.forEach(function (dl) {
+      if (dl.file) files.push({ path: 'content/productos/' + dl.file, del: true, label: 'eliminar: ' + dl.title });
+      (dl.photos || []).forEach(function (n) {
+        // La foto se borra solo si no la usa ningún otro producto.
+        if (usedByAnyone(n) || used[n]) return;
+        files.push({ path: 'images/' + n, del: true, img: true, label: 'borrar foto: ' + n });
+      });
+    });
     if (globalOrderDirty()) {
       files.push({
         path: 'content/orden.json',
@@ -711,6 +754,8 @@
   function commitFiles(files, message, progress) {
     var blobs = [];
     var chain = Promise.resolve();
+    var dels = files.filter(function (f) { return f.del; });
+    files = files.filter(function (f) { return !f.del; });
     files.forEach(function (f, i) {
       chain = chain.then(function () {
         progress('Subiendo ' + (i + 1) + ' de ' + files.length + '…');
@@ -724,7 +769,21 @@
       progress('Guardando en GitHub…');
       return gh('/branches/' + BRANCH).then(function (br) {
         var head = br.commit.sha, tree = br.commit.commit.tree.sha;
-        return gh('/git/trees', { method: 'POST', body: JSON.stringify({ base_tree: tree, tree: blobs }) })
+        // Para borrar, GitHub pide que el archivo exista: miramos qué hay realmente en el repo.
+        var delEntries = Promise.resolve([]);
+        if (dels.length) {
+          delEntries = gh('/git/trees/' + tree + '?recursive=1').then(function (t) {
+            if (t.truncated) return dels.filter(function (f) { return !f.img; });
+            var have = {};
+            (t.tree || []).forEach(function (e) { have[e.path] = true; });
+            return dels.filter(function (f) { return have[f.path]; });
+          }).then(function (list) {
+            return list.map(function (f) { return { path: f.path, mode: '100644', type: 'blob', sha: null }; });
+          });
+        }
+        return delEntries.then(function (de) {
+          return gh('/git/trees', { method: 'POST', body: JSON.stringify({ base_tree: tree, tree: blobs.concat(de) }) });
+        })
           .then(function (t) {
             return gh('/git/commits', { method: 'POST', body: JSON.stringify({ message: message, tree: t.sha, parents: [head] }) });
           })
@@ -746,6 +805,7 @@
     var h = '<h2>Publicar en la web</h2>';
     h += '<p class="pub-lead">Esto es lo que se va a actualizar:</p><ul class="pub-list">';
     d.forEach(function (it) { h += '<li>' + (it._new ? '🆕 ' : '✏️ ') + esc(it.title) + '</li>'; });
+    deleted.forEach(function (dl) { h += '<li>🗑️ Se elimina: ' + esc(dl.title) + '</li>'; });
     var imgs = files.filter(function (f) { return f.b64; }).length;
     if (imgs) h += '<li>📷 ' + imgs + (imgs === 1 ? ' foto nueva' : ' fotos nuevas') + '</li>';
     if (globalOrderDirty()) h += '<li>↕ El orden general del catálogo</li>';
@@ -767,7 +827,8 @@
     msg.hidden = false; msg.className = 'pub-msg';
     function progress(t) { msg.textContent = t; }
     var n = dirtyItems().length;
-    var message = 'Panel: ' + (n ? n + (n === 1 ? ' producto' : ' productos') : '') + (orderDirty() ? (n ? ' + orden' : 'orden del catálogo') : '');
+    var nd = deleted.length;
+    var message = 'Panel: ' + (n ? n + (n === 1 ? ' producto' : ' productos') : '') + (nd ? (n ? ' + ' : '') + nd + (nd === 1 ? ' eliminado' : ' eliminados') : '') + (orderDirty() ? (n || nd ? ' + orden' : 'orden del catálogo') : '');
     var p;
     if (DEMO) {
       console.log('MODO PRUEBA — se commitearía:', files.map(function (f) { return f.path + (f.b64 ? ' (' + f.b64.length + ' b64)' : ''); }), message);
@@ -782,6 +843,7 @@
       } catch (e) { /* no pasa nada */ }
       setBaseline();
       pending = {};
+      deleted = [];
       renderAll();
       msg.className = 'pub-msg ok';
       msg.innerHTML = '<b>¡Listo!</b> Los cambios ya están guardados. La web se actualiza sola en 1 o 2 minutos.' +
@@ -842,6 +904,7 @@
       if (t.id === 'edCancel') { if (confirmClose()) closeEditor(); }
       else if (t.id === 'edSave') saveEditor();
       else if (t.id === 'edRevert') revertEditor();
+      else if (t.id === 'edDelete') deleteCurrent();
       else if (t.id === 'edFooterBtn') {
         var ta = $('#edDesc');
         if (ta.value.indexOf('Cramer y Monroe') === -1) ta.value = ta.value.replace(/\s+$/, '') + '\n\n' + FOOTER;
@@ -861,7 +924,7 @@
       else if (!$('#editOverlay').hidden && confirmClose()) closeEditor();
     });
     window.addEventListener('beforeunload', function (e) {
-      if (dirtyItems().length || orderDirty()) { e.preventDefault(); e.returnValue = ''; }
+      if (dirtyItems().length || deleted.length || orderDirty()) { e.preventDefault(); e.returnValue = ''; }
     });
     setupDrag();
   }
