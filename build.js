@@ -88,8 +88,24 @@ function main() {
     console.error('No se pudo generar admin/todos.json (el panel visual no va a cargar).', e);
   }
 
+  // Orden propio de cada carpeta (content/orden-categorias.json, lo escribe el panel de admin).
+  let catOrder = {};
+  const CAT_FILE = path.join(__dirname, 'content', 'orden-categorias.json');
+  if (fs.existsSync(CAT_FILE)) {
+    try {
+      const raw = JSON.parse(fs.readFileSync(CAT_FILE, 'utf-8'));
+      const publicados = new Set(items.map(i => i.id));
+      Object.keys(raw.categorias || {}).forEach(k => {
+        const ids = (raw.categorias[k] || []).map(Number).filter(id => publicados.has(id));
+        if (ids.length) catOrder[k] = ids;
+      });
+    } catch (e) {
+      console.error('No se pudo leer content/orden-categorias.json, se usa el orden general.', e);
+    }
+  }
+
   const json = JSON.stringify(items, null, 0);
-  const output = `const ITEMS = ${json};\n`;
+  const output = `const ITEMS = ${json};\nconst CAT_ORDER = ${JSON.stringify(catOrder)};\n`;
 
   fs.writeFileSync(OUTPUT_FILE, output, 'utf-8');
   console.log(`data.js generado con ${items.length} productos (${ocultos} ocultos no publicados).`);

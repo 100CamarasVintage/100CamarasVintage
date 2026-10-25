@@ -10,6 +10,7 @@
   var API = '/.netlify/git/github';
   var BRANCH = 'main';
   var SNAP_KEY = 'panel100_ultima_publicacion';
+  var DRAFT_KEY = 'panel100_borrador';
 
   var FOOTER = 'Estamos en Cramer y Monroe BELGRANO CABA, donde podes pasar a retirar y probar las camaras\nTambién hacemos envios';
 
@@ -38,6 +39,8 @@
   var items = [];             // todos los productos (incluye ocultos), en el orden de la web
   var baseline = {};          // id -> firma del producto como está publicado
   var baseOrder = [];         // ids en el orden publicado
+  var catOrders = {};         // carpeta -> ids en el orden que se ve dentro de esa carpeta
+  var baseCatOrders = '{}';   // lo mismo, como estaba publicado
   var pending = {};           // nombre de foto nueva -> { b64, url }
   var cats = {};              // categorías seleccionadas
   var onlyHidden = false;
@@ -61,7 +64,25 @@
   }
   function sig(it) { return JSON.stringify(clean(it)); }
   function isDirty(it) { return !!it._new || baseline[it.id] !== sig(it); }
-  function orderDirty() { return items.map(function (i) { return i.id; }).join() !== baseOrder.join(); }
+  function globalOrderDirty() { return items.map(function (i) { return i.id; }).join() !== baseOrder.join(); }
+  function catDirty() { return JSON.stringify(catOrders) !== baseCatOrders; }
+  function changedCats() {
+    var base = {};
+    try { base = JSON.parse(baseCatOrders); } catch (e) { /* nada */ }
+    return Object.keys(catOrders).filter(function (k) { return JSON.stringify(catOrders[k]) !== JSON.stringify(base[k]); });
+  }
+  function orderDirty() { return globalOrderDirty() || catDirty(); }
+  function selKey() { var s = Object.keys(cats); return s.length === 1 ? s[0] : null; }
+  function canOrder() { return orderMode && Object.keys(cats).length <= 1; }
+  // Los productos que no están en la lista guardada (nuevos) van primero, como en la web.
+  function sortByList(list, ids) {
+    if (!ids || !ids.length) return list;
+    var pos = {};
+    ids.forEach(function (id, i) { pos[id] = i; });
+    var rest = list.filter(function (i) { return !(i.id in pos); });
+    var inl = list.filter(function (i) { return i.id in pos; }).sort(function (a, b) { return pos[a.id] - pos[b.id]; });
+    return rest.concat(inl);
+  }
   function dirtyItems() { return items.filter(isDirty); }
   function imgUrl(name) {
     if (!name) return '';
@@ -72,6 +93,7 @@
     baseline = {};
     items.forEach(function (it) { baseline[it.id] = sig(it); delete it._new; });
     baseOrder = items.map(function (i) { return i.id; });
+    baseCatOrders = JSON.stringify(catOrders);
   }
   function nextCode() {
     var max = 0;
@@ -88,18 +110,71 @@
 
   /* ---------------- Carga ---------------- */
   function loadData() {
+    var catP = fetch('/content/orden-categorias.json?t=' + Date.now()).then(function (r) {
+      return r.ok ? r.json() : {};
+    }).catch(function () { return {}; });
     return fetch('todos.json?t=' + Date.now()).then(function (r) {
       if (!r.ok) throw new Error('No se pudo leer todos.json (' + r.status + ')');
       return r.json();
     }).then(function (list) {
-      // Si publicaste hace poco y la web todavía se está actualizando, usamos tu última versión.
-      try {
-        var snap = JSON.parse(localStorage.getItem(SNAP_KEY) || 'null');
-        if (snap && Date.now() - snap.ts < 10 * 60 * 1000 && snap.items && snap.items.length) list = snap.items;
-      } catch (e) { /* sin snapshot */ }
-      items = list;
-      setBaseline();
+      return catP.then(function (c) {
+        var co = (c && c.categorias) || {};
+        // Si publicaste hace poco y la web todavía se está actualizando, usamos tu última versión.
+        try {
+          var snap = JSON.parse(localStorage.getItem(SNAP_KEY) || 'null');
+          if (snap && Date.now() - snap.ts < 10 * 60 * 1000 && snap.items && snap.items.length) {
+            list = snap.items;
+            if (snap.catOrders) co = snap.catOrders;
+          }
+        } catch (e) { /* sin snapshot */ }
+        items = list;
+        catOrders = co;
+        setBaseline();
+        restoreDraft();
+      });
     });
+  }
+
+  /* Borrador: guarda en este aparato lo que todavía no publicaste, por si se recarga la página. */
+  function saveDraft() {
+    try {
+      var d = dirtyItems();
+      var gd = globalOrderDirty(), cd = changedCats();
+      if (!d.length && !gd && !cd.length) { localStorage.removeItem(DRAFT_KEY); return; }
+      var draft = { ts: Date.now(), items: d.map(function (it) {
+        var c = clean(it);
+        c._file = it._file;
+        if (it._new) c._new = true;
+        c.photos = c.photos.filter(function (n) { return !pending[n]; });
+        if (pending[c.thumb]) c.thumb = c.photos[0] || '';
+        return c;
+      }) };
+      if (gd) draft.order = items.map(function (i) { return i.id; });
+      if (cd.length) { draft.catDiff = {}; cd.forEach(function (k) { draft.catDiff[k] = catOrders[k]; }); }
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+    } catch (e) { /* sin almacenamiento: no pasa nada */ }
+  }
+  function restoreDraft() {
+    try {
+      var d = JSON.parse(localStorage.getItem(DRAFT_KEY) || 'null');
+      if (!d || Date.now() - d.ts > 14 * 24 * 3600 * 1000) return;
+      var n = 0;
+      (d.items || []).forEach(function (di) {
+        var cur = items.filter(function (i) { return i.id === di.id; })[0];
+        if (cur) { Object.keys(di).forEach(function (k) { cur[k] = di[k]; }); n++; }
+        else if (di._new) { items.unshift(di); n++; }
+      });
+      if (d.order && d.order.length) {
+        var pos = {};
+        d.order.forEach(function (id, i) { pos[id] = i; });
+        var front = items.filter(function (i) { return !(i.id in pos); });
+        var rest = items.filter(function (i) { return i.id in pos; }).sort(function (a, b) { return pos[a.id] - pos[b.id]; });
+        items = front.concat(rest);
+        n++;
+      }
+      if (d.catDiff) { Object.keys(d.catDiff).forEach(function (k) { catOrders[k] = d.catDiff[k]; n++; }); }
+      if (n) toast('Recuperé tus cambios sin publicar. Cuando quieras, tocá «Publicar en la web».', 7000);
+    } catch (e) { /* borrador ilegible: se ignora */ }
   }
 
   /* ---------------- Barras de categorías ---------------- */
@@ -135,7 +210,7 @@
   function visible() {
     var q = $('#searchInput').value.trim().toLowerCase();
     var sel = Object.keys(cats);
-    return items.filter(function (i) {
+    var res = items.filter(function (i) {
       if (onlyHidden && !i.hidden) return false;
       if (sel.length && !sel.every(function (c) { return (i.category || []).indexOf(c) !== -1; })) return false;
       if (q) {
@@ -145,6 +220,8 @@
       }
       return true;
     });
+    var key = selKey();
+    return key ? sortByList(res, catOrders[key]) : res;
   }
 
   function cardHtml(it, pos) {
@@ -154,12 +231,12 @@
       (it.hidden ? '<span class="pbadge hid">OCULTA</span>' : '') +
       (it.pinned ? '<span class="pbadge pin">FIJA</span>' : '') +
       (it.code ? '<span class="pbadge code">#' + esc(it.code) + '</span>' : '') +
-      (orderMode && pos ? '<span class="pbadge pos">' + pos + '</span>' : '') +
+      (canOrder() && pos ? '<span class="pbadge pos">' + pos + '</span>' : '') +
       (dirty ? '<span class="pbadge chg">' + (it._new ? 'NUEVO' : 'cambiado') + '</span>' : '') +
       '</div>' +
       '<div class="card-body"><div class="card-title">' + esc(it.title) + '</div>' +
       '<div class="card-price">' + esc(it.price) + '</div>' +
-      (orderMode ? '<div class="pcard-order">' +
+      (canOrder() ? '<div class="pcard-order">' +
         '<button type="button" data-act="prev" title="Un lugar antes">←</button>' +
         '<button type="button" data-act="goto" title="Mandar a un lugar exacto">Lugar</button>' +
         '<button type="button" data-act="next" title="Un lugar después">→</button></div>' : '') +
@@ -169,7 +246,7 @@
   function renderGrid() {
     var grid = $('#grid');
     var vis = visible();
-    grid.className = 'grid pgrid' + (orderMode ? ' ordering' : '');
+    grid.className = 'grid pgrid' + (canOrder() ? ' ordering' : '');
     grid.innerHTML = '';
     vis.forEach(function (it, ix) {
       var c = document.createElement('div');
@@ -187,9 +264,12 @@
     var banner = $('#orderBanner');
     banner.hidden = !orderMode;
     if (orderMode) {
-      $('#orderBannerTxt').textContent = sel.length
-        ? 'Acomodando «' + sel.join(' + ') + '». Arrastrá cada cámara (en el celu, mantené apretado) o tocá «Lugar» para mandarla directo a una posición.'
-        : 'Acomodando todo el catálogo. Arrastrá cada cámara (en el celu, mantené apretado) o tocá «Lugar» para mandarla directo a una posición. Para ordenar dentro de una carpeta, elegí primero la categoría arriba.';
+      var nsel = sel.length;
+      $('#orderBannerTxt').textContent = nsel > 1
+        ? 'Elegí una sola carpeta (o ninguna, para el orden general) para poder acomodar.'
+        : nsel === 1
+          ? 'Acomodando «' + sel[0] + '». Este orden vale solo para esa carpeta: no cambia las otras. Arrastrá cada cámara (en el celu, mantené apretado) o tocá «Lugar» para mandarla directo a una posición.'
+          : 'Acomodando el orden general (se usa al buscar y al ordenar). Para acomodar una carpeta, elegila arriba.';
     }
   }
 
@@ -199,6 +279,7 @@
   }
 
   function renderStatus() {
+    saveDraft();
     var d = dirtyItems().length;
     var od = orderDirty();
     var n = d + (od ? 1 : 0);
@@ -218,7 +299,24 @@
 
   /* ---------------- Reordenar ---------------- */
   // Reacomoda sólo los lugares que ocupan los productos visibles, así el resto no se mueve.
+  function applyCatOrder(key, newVis) {
+    var members = sortByList(items.filter(function (i) { return (i.category || []).indexOf(key) !== -1; }), catOrders[key]);
+    var set = {};
+    newVis.forEach(function (id) { set[id] = true; });
+    var byId = {};
+    members.forEach(function (i) { byId[i.id] = i; });
+    var pos = [];
+    members.forEach(function (it, idx) { if (set[it.id]) pos.push(idx); });
+    if (pos.length !== newVis.length) return;
+    var next = members.slice();
+    pos.forEach(function (p, k) { next[p] = byId[newVis[k]]; });
+    var ids = next.map(function (i) { return i.id; });
+    if (!catOrders[key] && ids.join() === members.map(function (i) { return i.id; }).join()) return;
+    catOrders[key] = ids;
+  }
   function applyVisibleOrder(newVis) {
+    var key = selKey();
+    if (key) { applyCatOrder(key, newVis); return; }
     var set = {};
     newVis.forEach(function (id) { set[id] = true; });
     var byId = {};
@@ -353,7 +451,7 @@
     function cancelPress() { if (press) { clearTimeout(press.t); press = null; } }
 
     grid.addEventListener('mousedown', function (e) {
-      if (!orderMode || e.button !== 0 || e.target.closest('button')) return;
+      if (!canOrder() || e.button !== 0 || e.target.closest('button')) return;
       var card = e.target.closest('.pcard');
       if (!card) return;
       e.preventDefault();
@@ -368,7 +466,7 @@
     window.addEventListener('mouseup', function () { press = null; if (drag) endDrag(); });
 
     grid.addEventListener('touchstart', function (e) {
-      if (!orderMode || e.target.closest('button')) return;
+      if (!canOrder() || e.target.closest('button')) return;
       var card = e.target.closest('.pcard');
       if (!card || e.touches.length !== 1) return;
       var t = e.touches[0];
@@ -387,7 +485,7 @@
     function touchEnd() { cancelPress(); if (drag) endDrag(); }
     window.addEventListener('touchend', touchEnd);
     window.addEventListener('touchcancel', touchEnd);
-    grid.addEventListener('contextmenu', function (e) { if (orderMode) e.preventDefault(); });
+    grid.addEventListener('contextmenu', function (e) { if (canOrder()) e.preventDefault(); });
   }
 
   /* ---------------- Editor de producto ---------------- */
@@ -577,11 +675,18 @@
     Object.keys(used).forEach(function (n) {
       if (pending[n]) files.push({ path: 'images/' + n, b64: pending[n].b64, label: 'foto: ' + n });
     });
-    if (orderDirty()) {
+    if (globalOrderDirty()) {
       files.push({
         path: 'content/orden.json',
         text: JSON.stringify({ items: items.map(function (i) { return { producto: i.id }; }) }, null, 2) + '\n',
         label: 'orden del catálogo'
+      });
+    }
+    if (catDirty()) {
+      files.push({
+        path: 'content/orden-categorias.json',
+        text: JSON.stringify({ categorias: catOrders }, null, 2) + '\n',
+        label: 'orden por carpeta'
       });
     }
     return files;
@@ -643,7 +748,8 @@
     d.forEach(function (it) { h += '<li>' + (it._new ? '🆕 ' : '✏️ ') + esc(it.title) + '</li>'; });
     var imgs = files.filter(function (f) { return f.b64; }).length;
     if (imgs) h += '<li>📷 ' + imgs + (imgs === 1 ? ' foto nueva' : ' fotos nuevas') + '</li>';
-    if (orderDirty()) h += '<li>↕ El nuevo orden del catálogo</li>';
+    if (globalOrderDirty()) h += '<li>↕ El orden general del catálogo</li>';
+    changedCats().forEach(function (k) { h += '<li>↕ El nuevo orden de «' + esc(k) + '»</li>'; });
     h += '</ul><div id="pubMsg" class="pub-msg" hidden></div>';
     h += '<div class="ed-actions"><button type="button" class="btn ghost" id="pubCancel">Cancelar</button>' +
       '<button type="button" class="btn primary" id="pubGo">Publicar ahora</button></div>';
@@ -672,7 +778,7 @@
     }
     p.then(function () {
       try {
-        localStorage.setItem(SNAP_KEY, JSON.stringify({ ts: Date.now(), items: items.map(function (i) { var c = clean(i); c._file = i._file; return c; }) }));
+        localStorage.setItem(SNAP_KEY, JSON.stringify({ ts: Date.now(), items: items.map(function (i) { var c = clean(i); c._file = i._file; return c; }), catOrders: catOrders }));
       } catch (e) { /* no pasa nada */ }
       setBaseline();
       pending = {};

@@ -141,10 +141,20 @@ function renderPreviewRow(item) {
   return row;
 }
 
+// Orden propio de cada carpeta (lo arma Jenny desde el panel). Lo nuevo, que todavía no está en la lista, va primero.
+function sortByCatOrder(list, cat) {
+  const ids = (typeof CAT_ORDER !== 'undefined' && CAT_ORDER[cat]) || null;
+  if (!ids || !ids.length) return list;
+  const pos = new Map(ids.map((id, i) => [id, i]));
+  const rest = list.filter(i => !pos.has(i.id));
+  const listed = list.filter(i => pos.has(i.id)).sort((a, b) => pos.get(a.id) - pos.get(b.id));
+  return rest.concat(listed);
+}
+
 function renderSections() {
   categorySections.innerHTML = '';
   CATEGORY_ORDER.forEach(cat => {
-    const items = CATALOG_ITEMS.filter(i => Array.isArray(i.category) && i.category.includes(cat));
+    const items = sortByCatOrder(CATALOG_ITEMS.filter(i => Array.isArray(i.category) && i.category.includes(cat)), cat);
     if (items.length === 0) return;
 
     const section = document.createElement('div');
@@ -289,6 +299,9 @@ function applyFilter() {
     } else {
       filtered = filtered.filter(i => i.title.toLowerCase().includes(q) || i.description.toLowerCase().includes(q));
     }
+  }
+  if (currentCategories.size === 1 && !q && currentSort === 'default') {
+    filtered = sortByCatOrder(filtered, [...currentCategories][0]);
   }
   filtered = sortItems(filtered);
   renderGrid(filtered);
