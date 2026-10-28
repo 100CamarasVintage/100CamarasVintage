@@ -2,7 +2,7 @@
   "id": 208,
   "title": "Kodak Autographic",
   "price": "$120.000",
-  "hidden": false,
+  "hidden": true,
   "category": [
     "Cámaras de fuelle",
     "Kodak"
