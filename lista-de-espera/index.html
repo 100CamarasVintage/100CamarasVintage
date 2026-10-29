@@ -143,7 +143,8 @@ form.addEventListener('submit', async e => {
     const toNetlify = fetch('/', {method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:new URLSearchParams(fd).toString()}).then(r => r.ok).catch(() => false);
     const mail = {
       'Nombre': fd.get('nombre'), 'WhatsApp': fd.get('whatsapp'), email: fd.get('email') || '', 'Qué busca': fd.get('busco'), 'Presupuesto': fd.get('presupuesto') || '',
-      _subject: 'Nueva anotación: Avisame cuando llegue', _template: 'table', _captcha: 'false', _honey: fd.get('bot-field') || ''
+      _subject: 'Nueva anotación: Avisame cuando llegue', _template: 'table', _captcha: 'false',
+      _autoresponse: '¡Gracias por anotarte en 100 Cámaras Vintage! Ya guardamos tu pedido. Apenas aparezca lo que estás buscando, te escribimos por WhatsApp. Mientras tanto podés ver todo el catálogo en www.100camarasvintage.com. ¡Saludos! Equipo de 100 Cámaras Vintage', _honey: fd.get('bot-field') || ''
     };
     const toMail = fetch('https://formsubmit.co/ajax/jennycripto.eth@gmail.com', {method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body:JSON.stringify(mail)}).then(r => r.ok).catch(() => false);
     const [a, b] = await Promise.all([toNetlify, toMail]);
