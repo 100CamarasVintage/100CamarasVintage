@@ -1,7 +1,9 @@
 {
   "id": 61,
   "title": "Fujifilm X-E3 Mirrorless APS-C Solo Cuerpo Negra",
-  "price": "$1.500.000",
+  "price": "$1.200.000",
+  "hidden": false,
+  "orden": 670,
   "category": [
     "Cámaras digitales",
     "Fuji"
@@ -18,6 +20,5 @@
     "IMG-20260730-WA0207.jpg",
     "IMG-20260730-WA0208.jpg"
   ],
-  "thumb": "/images/IMG-20260730-WA0206.jpg",
-  "orden": 670
+  "thumb": "IMG-20260730-WA0206.jpg"
 }
