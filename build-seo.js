@@ -141,13 +141,20 @@ function main() {
   const items = loadItems();
   // slugs únicos
   const used = new Set();
+  const redirects = [];
   items.forEach(i => {
     let s = slugify(i.title) || 'producto';
-    s = i.code ? `${s}-${i.code}` : `${s}-${i.id}`;
+    const oldS = i.code ? `${s}-${i.code}` : `${s}-${i.id}`;
+    // en el link no va el "Marcos" del código: queda título + número (ej. ...-589)
+    const cleanCode = String(i.code || '').replace(/\s*marcos\s*/ig, '').trim();
+    s = cleanCode ? `${s}-${cleanCode}` : `${s}-${i.id}`;
+    if (oldS !== s) redirects.push(`/producto/${encodeURI(oldS)}/ /producto/${encodeURI(s)}/ 301`);
     while (used.has(s)) s += '-x';
     used.add(s);
     i.slug = s; i.url = `${SITE}/producto/${s}/`;
   });
+  // links viejos (con "Marcos") siguen funcionando: redirigen al link nuevo
+  fs.writeFileSync(path.join(ROOT, '_redirects'), redirects.join('\n') + (redirects.length ? '\n' : ''), 'utf-8');
   // mapa id -> slug para que el catálogo pueda armar el link de cada producto al compartir
   fs.writeFileSync(path.join(ROOT, 'slugs.js'), 'window.SLUGS=' + JSON.stringify(Object.fromEntries(items.map(i => [i.id, i.slug]))) + ';\n', 'utf-8');
 
