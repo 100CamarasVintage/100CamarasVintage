@@ -314,6 +314,33 @@ sortSelect.addEventListener('change', () => {
   applyFilter();
 });
 
+let currentShareUrl = '';
+const shareWhatsapp = document.getElementById('shareWhatsapp');
+const shareCopy = document.getElementById('shareCopy');
+const shareCopyText = document.getElementById('shareCopyText');
+
+// Link para compartir: la página propia del producto (con foto y precio al pegarla en WhatsApp);
+// si todavía no existe, el link directo al catálogo.
+function shareUrlFor(item) {
+  const slug = window.SLUGS && window.SLUGS[item.id];
+  return slug ? `${location.origin}/producto/${encodeURIComponent(slug)}/` : `${location.origin}${location.pathname}#producto-${item.id}`;
+}
+
+shareCopy.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(currentShareUrl);
+  } catch (e) {
+    const t = document.createElement('textarea');
+    t.value = currentShareUrl;
+    document.body.appendChild(t);
+    t.select();
+    try { document.execCommand('copy'); } catch (_) {}
+    t.remove();
+  }
+  shareCopyText.textContent = '¡Link copiado!';
+  setTimeout(() => { shareCopyText.textContent = 'Copiar link'; }, 2000);
+});
+
 function openModal(item) {
   currentItem = item;
   currentPhotoIndex = 0;
@@ -331,6 +358,10 @@ function openModal(item) {
   const codeText = item.code ? ` (Código: ${item.code})` : '';
   const msg = encodeURIComponent(`Hola! Te consulto por: ${item.title}${codeText}\n${directUrl}`);
   modalWhatsapp.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+  currentShareUrl = shareUrlFor(item);
+  const shareText = encodeURIComponent(`${item.title}${item.price ? ' - ' + item.price : ''}\n${currentShareUrl}`);
+  shareWhatsapp.href = `https://wa.me/?text=${shareText}`;
+  shareCopyText.textContent = 'Copiar link';
   renderDots();
   showPhoto(0);
   modalOverlay.hidden = false;

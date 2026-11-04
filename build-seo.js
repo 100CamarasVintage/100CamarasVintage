@@ -110,6 +110,8 @@ a{color:inherit}.top{border-bottom:3px solid var(--forest)}.top-inner{max-width:
 .price{font-family:'Bevan',serif;font-size:30px;color:var(--terracotta-dark);margin:0}.code{color:var(--ink-soft);font-size:14px;margin:2px 0 16px}
 .btn{display:inline-block;background:var(--forest);color:#fff;text-decoration:none;font-weight:700;padding:13px 24px;border-radius:4px}.btn:hover{background:var(--forest-dark)}
 .desc{white-space:pre-line;margin-top:22px;font-size:16px}
+.share{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:16px}.share-label{width:100%;font-size:13px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em}
+.sbtn{display:inline-block;background:transparent;color:var(--forest);border:2px solid var(--forest);border-radius:4px;padding:9px 16px;font:inherit;font-size:14px;font-weight:700;text-decoration:none;cursor:pointer}.sbtn:hover{background:var(--forest);color:#fff}
 .more{max-width:1100px;margin:0 auto;padding:10px 20px 40px}.more h2{font-family:'Bevan',serif;font-weight:400;color:var(--forest);font-size:24px}
 .more .row{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}.more a{background:#fff;border-radius:4px;box-shadow:var(--shadow);text-decoration:none;overflow:hidden;font-size:13px;font-weight:600}
 .more a img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}.more a span{display:block;padding:8px 10px}
@@ -124,11 +126,13 @@ footer{text-align:center;color:var(--ink-soft);font-size:14px;padding:24px 20px 
   <h1>${esc(i.title)}</h1>
   <p class="price">${esc(i.price || '')}</p>${i.code ? `<p class="code">Código: ${esc(i.code)}</p>` : ''}
   <a class="btn" href="${esc(wa)}" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+  <div class="share"><span class="share-label">Compartir esta publicación</span><a class="sbtn" href="${esc('https://wa.me/?text=' + encodeURIComponent(i.title + (i.price ? ' - ' + i.price : '') + '\n' + encodeURI(url)))}" target="_blank" rel="noopener">Por WhatsApp</a><button class="sbtn" type="button" id="copyLink" data-url="${esc(encodeURI(url))}">Copiar link</button></div>
   <div class="desc">${esc(String(i.description || '').startsWith(i.title) ? String(i.description).slice(i.title.length).replace(/^\s+/, '') : (i.description || ''))}</div>
  </div>
 </main>
 ${more ? `<section class="more"><h2>Más para ver</h2><div class="row">${more}</div></section>` : ''}
 <footer>100 Cámaras Vintage · @100camarasvintage · Cramer y Monroe, Belgrano, CABA · Envíos a todo el país</footer>
+<script>(function(){var c=document.getElementById('copyLink');if(!c)return;c.addEventListener('click',function(){var u=c.dataset.url;var done=function(){c.textContent='¡Link copiado!';setTimeout(function(){c.textContent='Copiar link'},2000)};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(done,done)}else{var t=document.createElement('textarea');t.value=u;document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(e){}t.remove();done()}})})()</script>
 <script>document.querySelectorAll('.th').forEach(function(b){b.addEventListener('click',function(){document.getElementById('main').src=b.dataset.src;document.querySelectorAll('.th').forEach(function(x){x.classList.remove('on')});b.classList.add('on')})})</script>
 </body></html>`;
 }
@@ -144,6 +148,8 @@ function main() {
     used.add(s);
     i.slug = s; i.url = `${SITE}/producto/${s}/`;
   });
+  // mapa id -> slug para que el catálogo pueda armar el link de cada producto al compartir
+  fs.writeFileSync(path.join(ROOT, 'slugs.js'), 'window.SLUGS=' + JSON.stringify(Object.fromEntries(items.map(i => [i.id, i.slug]))) + ';\n', 'utf-8');
 
   // páginas de producto
   rmDirSafe(path.join(ROOT, 'producto'));
