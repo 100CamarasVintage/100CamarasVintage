@@ -2,6 +2,8 @@
   "id": 68,
   "title": "Kodak PlaySport Zx5",
   "price": "$220.000",
+  "hidden": true,
+  "orden": 680,
   "category": [
     "Cámaras digitales",
     "Kodak"
@@ -13,9 +15,8 @@
     "IMG-20260802-WA0096.jpg",
     "IMG-20260802-WA0097.jpg",
     "IMG-20260802-WA0098.jpg",
-    "images/IMG-20260802-WA0099.jpg",
-    "/images/IMG-20260802-WA0103.jpg"
+    "IMG-20260802-WA0099.jpg",
+    "IMG-20260802-WA0103.jpg"
   ],
-  "thumb": "/images/IMG-20260802-WA0095.jpg",
-  "orden": 680
+  "thumb": "IMG-20260802-WA0095.jpg"
 }
