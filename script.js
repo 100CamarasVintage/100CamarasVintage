@@ -68,7 +68,7 @@ const BRAND_ORDER = [
   'Olympus',
   'Yashica',
   'Fuji',
-  'Soviéticas',
+  'Soviéticas / M42',
   'Minolta',
   'Kodak',
   'Sony'

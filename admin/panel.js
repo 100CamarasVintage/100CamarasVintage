@@ -17,7 +17,7 @@
   var STYLE_ORDER = ['Nuevos ingresos', 'Cámaras analógicas', 'Cámaras point and shoot', 'Cámaras digitales',
     'Cámaras nuevas en caja sin uso', 'Lentes', 'Flashes', 'Raras/coleccionables', 'TLR', 'Micro 4/3',
     'Cámaras de fuelle', 'Filmadoras a cuerda', 'Otros', 'Para deco o restauración'];
-  var BRAND_ORDER = ['Nikon', 'Canon', 'Pentax', 'Olympus', 'Yashica', 'Fuji', 'Soviéticas', 'Minolta', 'Kodak', 'Sony'];
+  var BRAND_ORDER = ['Nikon', 'Canon', 'Pentax', 'Olympus', 'Yashica', 'Fuji', 'Soviéticas / M42', 'Minolta', 'Kodak', 'Sony'];
   var ICONS = {
     'Nuevos ingresos': 'icon-nuevoingresos.png', 'Cámaras analógicas': 'icon-reflex.png',
     'Cámaras point and shoot': 'icon-compacta.png', 'Cámaras digitales': 'icon-digitales.png',
